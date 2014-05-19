@@ -2,6 +2,7 @@ class SRScoreBoard extends KFScoreBoard;
 
 #exec TEXTURE IMPORT FILE="Textures\Shield.pcx" NAME="I_AdminShield" GROUP="Icons" MIPS=0 MASKED=1
 //#exec TEXTURE IMPORT FILE="Textures\nef.pcx" NAME="T_NEFLogo" MIPS=0 MASKED=1
+#exec OBJ LOAD FILE=..\NEFCustoms\Textures\NEFCustoms_T.utx
 
 var bool bDrawLevelDigits;
 var byte FrameCounter;
@@ -175,13 +176,13 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	Canvas.DrawColor.R = 53;
 	Canvas.DrawColor.G = 242;
 	Canvas.DrawColor.B = 110;
-	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 20.0f, (HeaderOffsetY - (YL + 15.0f)));
+	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 20.0, (HeaderOffsetY - (YL + 15.0)));
 	Canvas.DrawTextClipped("www.nefserver.net");
 	Canvas.DrawColor.R = 245;
 	Canvas.DrawColor.G = 144;
 	Canvas.DrawColor.B = 37;
 	
-	//Canvas.DrawTile(Texture'T_NEFLogo', (0.5 * (Canvas.ClipX - XL)) + 20.0f, (HeaderOffsetY - (YL + 15.0f)) + 50.0f, 0, 0, Texture'T_NEFLogo'.USize, Texture'T_NEFLogo'.VSize);
+	//Canvas.DrawTile(Texture'NEFCustoms_T.HUD.Logo', (0.5 * (Canvas.ClipX - XL)) + 20.0, (HeaderOffsetY - (YL + 15.0f)) + 150.0, 0, 0, 512, 512); // EDIT HERE
 
 	// Second title line
 	S = PlayerCountText@PlayerCount@SpectatorCountText@NetXPos@AliveCountText@HeadFoot;

@@ -170,7 +170,7 @@ static function AddDefaultInventory(KFPlayerReplicationInfo KFPRI, Pawn P)
 	if ( KFPRI.ClientVeteranSkillLevel <= 5 )
 		AddPerkedWeapon(class'Axe',KFPRI,P);
 	else if ( KFPRI.ClientVeteranSkillLevel <= 10 )
-		AddPerkedWeapon(class'DwarfAxePickup',KFPRI,P);
+		AddPerkedWeapon(class'DwarfAxe',KFPRI,P);
 
 	// If Level 6, give them Body Armor(Removed from Suicidal and HoE in Balance Round 7)
 	if(KFPRI.ClientVeteranSkillLevel > 3 && KFPRI.ClientVeteranSkillLevel <= 6)

@@ -113,14 +113,22 @@ simulated function Tick(float dt)
 	else
 		bJustStarted = true;
 	
-	if (BDWeldFire(FireMode[FireModeArray]).LastHitActor != none && VSize(BDWeldFire(FireMode[FireModeArray]).LastHitActor.Location - Owner.Location) <= (weaponRange * 2.5) )
+	if (BDWeldFire(FireMode[FireModeArray]).LastHitActor != none
+		|| BDWeldFire(FireMode[FireModeArray]).LastHitActorB != none /*&& VSize(BDWeldFire(FireMode[FireModeArray]).LastHitActor.Location - Owner.Location) <= (weaponRange * 2.5) */)
 	{
 		bNoTarget = false;
-		LastDoorHitActor = KFDoorMover(BDWeldFire(FireMode[FireModeArray]).LastHitActor);
+		LastDoorHitActor = BDWeldFire(FireMode[FireModeArray]).LastHitActor;
 		
         if(LastDoorHitActor != none)
         {
 			ScreenWeldPercent = (LastDoorHitActor.WeldStrength / LastDoorHitActor.MaxWeld) * 100;
+		}
+		
+		LastVehicleHitActor = BDWeldFire(FireMode[FireModeArray]).LastHitActorB;
+		
+		if(LastVehicleHitActor != none)
+		{
+			ScreenWeldPercent = (LastVehicleHitActor.Health / LastVehicleHitActor.HealthMax) * 100;
 		}
 		
 		if( ScriptedScreen==None )
@@ -151,7 +159,7 @@ simulated function Tick(float dt)
 			}
 		}
 	}
-	else if (BDWeldFire(FireMode[FireModeArray]).LastHitActor == none || BDWeldFire(FireMode[FireModeArray]).LastHitActor != none && VSize(BDWeldFire(FireMode[FireModeArray]).LastHitActor.Location - Owner.Location) > (weaponRange * 2.5) )
+	/*else if ((BDWeldFire(FireMode[FireModeArray]).LastHitActor == none || BDWeldFire(FireMode[FireModeArray]).LastHitActor != none)/* && VSize(BDWeldFire(FireMode[FireModeArray]).LastHitActor.Location - Owner.Location) > (weaponRange * 2.5)*/ )
 	{
 		if( ScriptedScreen==None )
 			InitMaterials();
@@ -163,20 +171,20 @@ simulated function Tick(float dt)
 		{
 		  PlayIdle();
 		}
-	}
+	}*/
 
-	if (BDWeldFire(FireMode[FireModeArray]).LastHitActorB != none && VSize(BDWeldFire(FireMode[FireModeArray]).LastHitActorB.Location - Owner.Location) <= (weaponRange * 2.5) )
+	/*if (BDWeldFire(FireMode[FireModeArray]).LastHitActorB != none && VSize(BDWeldFire(FireMode[FireModeArray]).LastHitActorB.Location - Owner.Location) <= (weaponRange * 2.5) )
 	{
 		bNoTarget = false;
-		LastVehicleHitActor = BDWheeledVehicle(BDWeldFire(FireMode[FireModeArray]).LastHitActorB);
+		LastVehicleHitActor = BDWeldFire(FireMode[FireModeArray]).LastHitActorB;
 		
 		if(LastVehicleHitActor != none)
 		{
 			ScreenWeldPercent = (LastVehicleHitActor.Health / LastVehicleHitActor.HealthMax) * 100;
 		}
 		
-		if(LastVehicleHitActor.Health < 100)
-			LastVehicleHitActor.Health += 1;
+		//if(LastVehicleHitActor.Health < 100)
+		//	LastVehicleHitActor.Health += 1;
 		
 		if( ScriptedScreen==None )
 			InitMaterials();
@@ -205,8 +213,9 @@ simulated function Tick(float dt)
 				}
 			}
 		}
-	}
-	else if (BDWeldFire(FireMode[FireModeArray]).LastHitActorB == none || BDWeldFire(FireMode[FireModeArray]).LastHitActorB != none && VSize(BDWeldFire(FireMode[FireModeArray]).LastHitActorB.Location - Owner.Location) > (weaponRange * 2.5) )
+	}*/
+	else if (BDWeldFire(FireMode[FireModeArray]).LastHitActorB == none
+		|| BDWeldFire(FireMode[FireModeArray]).LastHitActorB != none  && VSize(WeldFire(FireMode[FireModeArray]).LastHitActor.Location - Owner.Location) > (weaponRange * 2.5) && !bNoTarget )
 	{
 		if( ScriptedScreen==None )
 			InitMaterials();
@@ -338,5 +347,6 @@ defaultproperties
      HealPauseMax=3
      HealBoostAmount=5
      FireModeClass(0)=Class'KF_Vehicles_BD.BDWeldFire'
+	 ItemName="Vehicle Welder"
      PickupClass=Class'KF_Vehicles_BD.BDWelderPickup'
 }

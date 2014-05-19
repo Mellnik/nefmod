@@ -1,8 +1,8 @@
 // Weld Fire //
 class BDWeldFire extends KFMeleeFire;
 
-var 			Actor LastHitActor;
-var				Actor LastHitActorB;
+var 			KFDoorMover LastHitActor;
+var				BDWheeledVehicle LastHitActorB;
 var localized 	string 		NoWeldTargetMessage;
 var localized 	string 		CantWeldTargetMessage;
 var 			float 		FailTime;
@@ -11,7 +11,7 @@ var				float	HealAttemptDelay;
 var 			float 	LastHealMessageTime;
 var 			float 	HealMessageDelay;
 var localized   string  NoHealTargetMessage;
-var             BDWheeledVehicle    CachedHealee;
+//var             Actor    CachedHealee;
 var() float             tracerange;
 var int maxAdditionalDamage;
 
@@ -78,8 +78,8 @@ simulated Function Timer()
             Weapon.bBlockHitPointTraces = Weapon.default.bBlockHitPointTraces;
 		}
 
-		LastHitActor = HitActor;
-		LastHitActorB = HitActor;
+		LastHitActor = KFDoorMover(HitActor);
+		LastHitActorB = BDWheeledVehicle(HitActor);
 
 		if( LastHitActor!=none && Level.NetMode!=NM_Client )
 		{
@@ -101,7 +101,7 @@ simulated Function Timer()
 			
 			HitActor.TakeDamage(0, Instigator, HitLocation , vector(PointRot),hitDamageClass);
 			Spawn(class'KFWelderHitEffect',,, AdjustedLocation, rotator(HitLocation - StartTrace));	
-		}
+		}		
 	}
 }
 
@@ -162,14 +162,6 @@ function bool AllowFire()
 
 		return false;
 	}
-
-	if(WeldTarget != None && WeldTarget.bDisallowWeld)
-	{
-		if( PlayerController(Instigator.controller)!=None )
-			PlayerController(Instigator.controller).ClientMessage(CantWeldTargetMessage, 'CriticalEvent');
-
-		return false;
-	}
 	
 	if(RepairTarget != none && RepairTarget.health >= RepairTarget.HealthMax)
 	{
@@ -178,6 +170,14 @@ function bool AllowFire()
 	
 		return false;
 	}
+
+	if(WeldTarget != None && WeldTarget.bDisallowWeld)
+	{
+		if( PlayerController(Instigator.controller)!=None )
+			PlayerController(Instigator.controller).ClientMessage(CantWeldTargetMessage, 'CriticalEvent');
+
+		return false;
+	}	
 	
     return Weapon.AmmoAmount(ThisModeNum) >= AmmoPerFire;	
 }

@@ -2,6 +2,13 @@ class SPGameMut extends mutator config (KF_Vehicles_BD);
 
 var globalconfig int MaxCarLimit, MinCarLimit;
 
+/*function bool CheckReplacement(Actor Other, out byte bSuperRelevant) {
+    if (Other.IsA('KFHumanPawn'))
+        KFHumanPawn(Other).RequiredEquipment[4] = "KF_Vehicles_BD.BDWelder";
+
+    return true;
+}*/
+
 static function FillPlayInfo(PlayInfo PlayInfo) 
 {
 	//local string option;
@@ -28,6 +35,15 @@ function postBeginPlay()
 
 	BDgametype(level.game).MaxCarLimit = MaxCarLimit;
 	BDgametype(level.game).MinCarLimit = MinCarLimit;
+}
+
+static event string GetDescriptionText(string PropName)
+{
+	switch (PropName)
+	{
+		case "MaxCarLimit":		return "Maximum amount of cars that can appears on map.";
+		case "MinCarLimit":		return "Minimum amount of cars that can appears on map.";
+	}
 }
 
 defaultproperties

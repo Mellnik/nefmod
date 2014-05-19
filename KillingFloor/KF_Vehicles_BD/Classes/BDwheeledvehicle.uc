@@ -644,7 +644,9 @@ function TakeDamage( int Damage, Pawn instigatedBy, Vector hitlocation,
 
 	if (DamageType != None && DamageType == class'DamTypeWelder')
 	{
-		Health = Health+1;
+		//if(Health<HealthMax)
+			Health = Health+1;
+		//return;
 	}
 
 	if (bRemoteControlled && Driver!=None)
@@ -736,7 +738,9 @@ function TakeDamage( int Damage, Pawn instigatedBy, Vector hitlocation,
 
 	if (DamageType != None && DamageType == class'DamTypeWelder')
 	{
-		Health = Health+1;
+		if(Health<HealthMax)
+			Health = Health+1;
+		//return;
 	}
 
 
@@ -977,7 +981,7 @@ defaultproperties
      MPHPointer=TexRotator'BDVehicle_T.HUD.SpeedMeterPointer'
      MaxFuelPointerRotation=-23000
      MaxMPHPointerRotation=-44000
-     healthToGive=1.000000
+     healthToGive=0.000000
      bHasAltFire=True
      ImpactDamageSounds(0)=Sound'ProjectileSounds.Bullets.PTRD_deflect01'
      ImpactDamageSounds(1)=Sound'ProjectileSounds.Bullets.PTRD_deflect04'

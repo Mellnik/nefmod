@@ -40,12 +40,14 @@ static function float GetMagCapacityMod(KFPlayerReplicationInfo KFPRI, KFWeapon 
 		return 1.0 + (0.12 * FMin(float(KFPRI.ClientVeteranSkillLevel), 5.0)); // 60% increase in MAC10 ammo carry
 	return 1.0;
 }
+
 static function float GetAmmoPickupMod(KFPlayerReplicationInfo KFPRI, KFAmmunition Other)
 {
 	if ( (FlameAmmo(Other)!=none || MAC10Ammo(Other)!=none || HuskGunAmmo(Other)!=none || TrenchgunAmmo(Other)!=none || FlareRevolverAmmo(Other)!=none) && KFPRI.ClientVeteranSkillLevel > 0 )
 		return 1.0 + (0.10 * float(KFPRI.ClientVeteranSkillLevel)); // Up to 60% larger fuel canister
 	return 1.0;
 }
+
 static function float AddExtraAmmoFor(KFPlayerReplicationInfo KFPRI, Class<Ammunition> AmmoType)
 {
 	if ( (AmmoType==class'FlameAmmo' || AmmoType==class'MAC10Ammo' || AmmoType==class'HuskGunAmmo' || AmmoType==class'TrenchgunAmmo' || AmmoType==class'FlareRevolverAmmo' || AmmoType==class'GoldenFlameAmmo') && KFPRI.ClientVeteranSkillLevel > 0 )
@@ -117,7 +119,7 @@ static function AddDefaultInventory(KFPlayerReplicationInfo KFPRI, Pawn P)
 	if ( KFPRI.ClientVeteranSkillLevel <= 5 )
 		AddPerkedWeapon(class'FlameThrower',KFPRI,P);
 
-	if ( KFPRI.ClientVeteranSkillLevel >= 6 )
+	else if ( KFPRI.ClientVeteranSkillLevel >= 6 )
 		P.ShieldStrength = 100;
 }
 
@@ -131,9 +133,9 @@ static function string GetCustomLevelInfo( byte Level )
 	local string S;
 
 	S = Default.CustomLevelInfo;
-	ReplaceText(S,"%s",GetPercentStr(0.1 * float(Level)));
-	ReplaceText(S,"%m",GetPercentStr(0.05 * float(Level)));
-	ReplaceText(S,"%d",GetPercentStr(0.1+FMin(0.1 * float(Level),0.8f)));
+	ReplaceText(S, "%s", GetPercentStr(0.1 * float(Level)));
+	ReplaceText(S, "%m", GetPercentStr(0.05 * float(Level)));
+	ReplaceText(S, "%d", GetPercentStr(0.1 + FMin(0.1 * float(Level),0.8f)));
 	return S;
 }
 

@@ -9,7 +9,7 @@ function Timer()
 {
 	Level.Game.Broadcast(None, "Welcome to New Evolution Freeroam");
 }
-
+/*
 function bool CheckReplacement(Actor Other, out byte bSuperRelevant)
 {
 	local KFHumanPawn KFHP;
@@ -28,12 +28,10 @@ function bool CheckReplacement(Actor Other, out byte bSuperRelevant)
 		}
 	}
 	return true;
-}
+}*/
 
 defaultproperties
 {
-	bAddToServerPackages=True
-	bAlwaysRelevant=True
     GroupName="KF-NEFGameMode"
     FriendlyName="NEFGameMode"
     Description="The New Evolution Freeroam Gamemode"

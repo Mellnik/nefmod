@@ -106,15 +106,12 @@ static function float GetAmmoCostScaling(KFPlayerReplicationInfo KFPRI, class<Pi
 // Give Extra Items as default
 static function AddDefaultInventory(KFPlayerReplicationInfo KFPRI, Pawn P)
 {
-	P.GiveWeapon("KnifeShadowBladeMut.MutKnifeShadowBlade");
-	P.GiveWeapon("Pistol9mmNinemmMut.Mut9mmNinemm");
+	AddPerkedWeapon(class'PipeBombExplosive',KFPRI,P);
 
-	// If Level 5, give them a pipe bomb
-	if ( KFPRI.ClientVeteranSkillLevel >= 5 )
-		AddPerkedWeapon(class'PipeBombExplosive',KFPRI,P);
-	// If Level 6, give them a M79Grenade launcher and pipe bomb
-	if ( KFPRI.ClientVeteranSkillLevel >= 6 )
+	if ( KFPRI.ClientVeteranSkillLevel <= 5 )
 		AddPerkedWeapon(class'M79GrenadeLauncher',KFPRI,P);
+	else if ( KFPRI.ClientVeteranSkillLevel <= 10 )
+		AddPerkedWeapon(class'M4203AssaultRifle',KFPRI,P);
 }
 
 static function string GetCustomLevelInfo( byte Level )

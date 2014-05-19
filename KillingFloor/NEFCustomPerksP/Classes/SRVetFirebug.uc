@@ -114,14 +114,9 @@ static function float GetCostScaling(KFPlayerReplicationInfo KFPRI, class<Pickup
 // Give Extra Items as default
 static function AddDefaultInventory(KFPlayerReplicationInfo KFPRI, Pawn P)
 {
-	P.GiveWeapon("KnifeShadowBladeMut.MutKnifeShadowBlade");
-	P.GiveWeapon("Pistol9mmNinemmMut.Mut9mmNinemm");
-	
-	// If Level 5 or 6, give them a Flame Thrower
-	if ( KFPRI.ClientVeteranSkillLevel >= 5 )
+	if ( KFPRI.ClientVeteranSkillLevel <= 5 )
 		AddPerkedWeapon(class'FlameThrower',KFPRI,P);
 
-	// If Level 6, give them Body Armor
 	if ( KFPRI.ClientVeteranSkillLevel >= 6 )
 		P.ShieldStrength = 100;
 }

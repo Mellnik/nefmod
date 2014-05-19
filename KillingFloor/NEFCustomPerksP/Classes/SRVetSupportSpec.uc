@@ -1,6 +1,6 @@
 class SRVetSupportSpec extends SRVeterancyTypes
 	abstract;
-
+	
 static function int GetPerkProgressInt( ClientPerkRepLink StatOther, out int FinalInt, byte CurLevel, byte ReqNum )
 {
 	switch( CurLevel )
@@ -122,15 +122,16 @@ static function float GetCostScaling(KFPlayerReplicationInfo KFPRI, class<Pickup
 // Give Extra Items as Default
 static function AddDefaultInventory(KFPlayerReplicationInfo KFPRI, Pawn P)
 {
-	P.GiveWeapon("KnifeShadowBladeMut.MutKnifeShadowBlade");
-	P.GiveWeapon("Pistol9mmNinemmMut.Mut9mmNinemm");
-	
-	// If Level 5, give them Assault Shotgun
-	if ( KFPRI.ClientVeteranSkillLevel == 5 )
+	//KFHumanPawn(P).RequiredEquipment[0] = "";
+	//KFHumanPawn(P).RequiredEquipment[1] = "";
+
+	//KFHumanPawn(P).CreateInventoryVeterancy("KnifeShadowBladeMut.KnifeShadowBlade", GetCostScaling(KFPRI, class'KnifeShadowBladeMut.KnifeShadowBladePickup'));
+	//KFHumanPawn(P).CreateInventoryVeterancy("Pistol9mmNinemmMut.SingleNinemmSingle", GetCostScaling(KFPRI, class'Pistol9mmNinemmMut.SingleNinemmCustomPickup'));
+
+	if ( KFPRI.ClientVeteranSkillLevel <= 5 )
 		AddPerkedWeapon(class'Shotgun',KFPRI,P);
-	// If Level 6, give them Hunting Shotgun
-	if ( KFPRI.ClientVeteranSkillLevel >= 6 )
-		AddPerkedWeapon(class'BoomStick',KFPRI,P);
+	else if ( KFPRI.ClientVeteranSkillLevel >= 10 )
+		AddPerkedWeapon(class'AA12AutoShotgun',KFPRI,P);
 }
 
 static function string GetCustomLevelInfo( byte Level )

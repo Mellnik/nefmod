@@ -1,6 +1,7 @@
 class SRScoreBoard extends KFScoreBoard;
 
 #exec TEXTURE IMPORT FILE="Textures\Shield.pcx" NAME="I_AdminShield" GROUP="Icons" MIPS=0 MASKED=1
+//#exec TEXTURE IMPORT FILE="Textures\nef.pcx" NAME="T_NEFLogo" MIPS=0 MASKED=1
 
 var bool bDrawLevelDigits;
 var byte FrameCounter;
@@ -161,12 +162,26 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 
 	Canvas.Font = class'ROHud'.static.GetSmallMenuFont(Canvas);
 	Canvas.TextSize(S, XL,YL);
-	Canvas.DrawColor = HUDClass.default.RedColor;
+	//Canvas.DrawColor = HUDClass.default.RedColor;
+	Canvas.DrawColor.R = 245;
+	Canvas.DrawColor.G = 144;
+	Canvas.DrawColor.B = 37;
 	Canvas.Style = ERenderStyle.STY_Normal;
 
 	HeaderOffsetY = Canvas.ClipY * 0.11;
 	Canvas.SetPos(0.5 * (Canvas.ClipX - XL), HeaderOffsetY);
 	Canvas.DrawTextClipped(S);
+	
+	Canvas.DrawColor.R = 53;
+	Canvas.DrawColor.G = 242;
+	Canvas.DrawColor.B = 110;
+	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 20.0f, (HeaderOffsetY - (YL + 15.0f)));
+	Canvas.DrawTextClipped("www.nefserver.net");
+	Canvas.DrawColor.R = 245;
+	Canvas.DrawColor.G = 144;
+	Canvas.DrawColor.B = 37;
+	
+	//Canvas.DrawTile(Texture'T_NEFLogo', (0.5 * (Canvas.ClipX - XL)) + 20.0f, (HeaderOffsetY - (YL + 15.0f)) + 50.0f, 0, 0, Texture'T_NEFLogo'.USize, Texture'T_NEFLogo'.VSize);
 
 	// Second title line
 	S = PlayerCountText@PlayerCount@SpectatorCountText@NetXPos@AliveCountText@HeadFoot;
@@ -174,6 +189,7 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	HeaderOffsetY+=YL;
 	Canvas.SetPos(0.5 * (Canvas.ClipX - XL), HeaderOffsetY);
 	Canvas.DrawTextClipped(S);
+	Canvas.DrawColor = HUDClass.default.RedColor;
 	HeaderOffsetY+=(YL*3.f);
 
 	// Select best font size and box size to fit as many players as possible on screen
@@ -255,7 +271,7 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 
 	Canvas.DrawColor = HUDClass.default.WhiteColor;
 	Canvas.SetPos(NameXPos, TitleYPos);
-	Canvas.DrawTextClipped(PlayerText);
+	Canvas.DrawTextClipped("Player");
 
 	Canvas.SetPos(KillsXPos - 0.5 * KillsXL, TitleYPos);
 	Canvas.DrawTextClipped(KillsText);
@@ -266,7 +282,7 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 
 	Canvas.TextSize(TimeText, XL, YL);
 	Canvas.SetPos(TimeXPos - 0.5 * XL, TitleYPos);
-	Canvas.DrawTextClipped(TimeText);
+	Canvas.DrawTextClipped("Time");
 
 	Canvas.SetPos(HealthXPos - 0.5 * HealthXL, TitleYPos);
 	Canvas.DrawTextClipped(HealthText);
@@ -277,7 +293,7 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 
 	Canvas.DrawColor = HUDClass.default.WhiteColor;
 	Canvas.SetPos(NetXPos - NetXL, TitleYPos);
-	Canvas.DrawTextClipped(NetText);
+	Canvas.DrawTextClipped("Ping");
 
 	BoxTextOffsetY = HeaderOffsetY + 0.5 * (PlayerBoxSizeY - YL);
 

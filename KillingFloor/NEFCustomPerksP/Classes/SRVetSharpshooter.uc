@@ -1,8 +1,6 @@
 class SRVetSharpshooter extends SRVeterancyTypes
 	abstract;
 
-#exec OBJ LOAD FILE=..\NEFCustomPerksP\System\Pistol9mmNinemmMut.u
-
 static function int GetPerkProgressInt( ClientPerkRepLink StatOther, out int FinalInt, byte CurLevel, byte ReqNum )
 {
 	switch( CurLevel )
@@ -93,9 +91,7 @@ static function float ModifyRecoilSpread(KFPlayerReplicationInfo KFPRI, WeaponFi
         || Single(Other.Weapon) != none || Dualies(Other.Weapon) != none
         || Deagle(Other.Weapon) != none || DualDeagle(Other.Weapon) != none
 		|| M14EBRBattleRifle(Other.Weapon) != none || M99SniperRifle(Other.Weapon) != none
-        || SPSniperRifle(Other.Weapon) != none 
-		|| Dualies9mmNinemm(Other.Weapon) != none
-		|| SingleNinemmSingle(Other.Weapon) != none)
+        || SPSniperRifle(Other.Weapon) != none)
 	{
 		if ( KFPRI.ClientVeteranSkillLevel == 1)
 			Recoil = 0.75;
@@ -127,7 +123,7 @@ static function float GetReloadSpeedModifier(KFPlayerReplicationInfo KFPRI, KFWe
          || Deagle(Other) != none || DualDeagle(Other) != none
          || MK23Pistol(Other) != none || DualMK23Pistol(Other) != none
          || M14EBRBattleRifle(Other) != none || Magnum44Pistol(Other) != none
-         || Dual44Magnum(Other) != none || SPSniperRifle(Other) != none || Dualies9mmNinemm(Other) != none || SingleNinemmSingle(Other) != none)
+         || Dual44Magnum(Other) != none || SPSniperRifle(Other) != none)
 	{
 		if ( KFPRI.ClientVeteranSkillLevel == 0 )
 			return 1.0;
@@ -144,9 +140,7 @@ static function float GetCostScaling(KFPlayerReplicationInfo KFPRI, class<Pickup
         Item == class'Magnum44Pickup' || Item == class'Dual44MagnumPickup'
         || Item == class'M14EBRPickup' || Item == class'M99Pickup'
         || Item == class'SPSniperPickup' || Item == class'GoldenDeaglePickup'
-        || Item == class'GoldenDualDeaglePickup'
-		|| Item == class'Pistol9mmNinemmMut.SingleNinemmCustomPickup'
-		|| Item == class'Pistol9mmNinemmMut.Dualies9mmNinemmPickup')
+        || Item == class'GoldenDualDeaglePickup')
 		return FMax(0.9 - (0.10 * float(KFPRI.ClientVeteranSkillLevel)),0.1); // Up to 70% discount on Handcannon/Dual Handcannons/EBR
 	return 1.0;
 }
@@ -161,16 +155,10 @@ static function float GetAmmoCostScaling(KFPlayerReplicationInfo KFPRI, class<Pi
 // Give Extra Items as Default
 static function AddDefaultInventory(KFPlayerReplicationInfo KFPRI, Pawn P)
 {
-	P.GiveWeapon("KnifeShadowBladeMut.MutKnifeShadowBlade");
-	P.GiveWeapon("Pistol9mmNinemmMut.Mut9mmNinemm");
-
-	// If Level 5, give them a  Lever Action Rifle
-	if ( KFPRI.ClientVeteranSkillLevel == 5 )
-		AddPerkedWeapon(class'Winchester',KFPRI,P);
-
-	// If Level 6, give them a Crossbow
-	if ( KFPRI.ClientVeteranSkillLevel >= 6 )
-		AddPerkedWeapon(class'Crossbow',KFPRI,P);
+	if ( KFPRI.ClientVeteranSkillLevel <= 5 )
+		AddPerkedWeapon(class'M14EBRBattleRifle',KFPRI,P);
+	else if ( KFPRI.ClientVeteranSkillLevel <= 10 )
+		AddPerkedWeapon(class'M99SniperRifle',KFPRI,P);
 }
 
 static function string GetCustomLevelInfo( byte Level )

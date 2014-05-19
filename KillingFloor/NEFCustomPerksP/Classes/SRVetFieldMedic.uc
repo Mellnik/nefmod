@@ -131,14 +131,9 @@ static function float GetBodyArmorDamageModifier(KFPlayerReplicationInfo KFPRI)
 // Give Extra Items as Default
 static function AddDefaultInventory(KFPlayerReplicationInfo KFPRI, Pawn P)
 {
-	P.GiveWeapon("KnifeShadowBladeMut.MutKnifeShadowBlade");
-	P.GiveWeapon("Pistol9mmNinemmMut.Mut9mmNinemm");
-
-	// If Level 5 or Higher, give them Body Armor
-	if ( KFPRI.ClientVeteranSkillLevel >= 5 )
+	if ( KFPRI.ClientVeteranSkillLevel <= 5 )
 		P.ShieldStrength = 100;
-	// If Level 6, give them a Medic Gun
-	if ( KFPRI.ClientVeteranSkillLevel >= 6 )
+	else if ( KFPRI.ClientVeteranSkillLevel <= 10 )
 		AddPerkedWeapon(class'MP7MMedicGun',KFPRI,P);
 }
 

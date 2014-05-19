@@ -10,21 +10,30 @@ function Timer()
 	Level.Game.Broadcast(None, "Welcome to New Evolution Freeroam");
 }
 
-/*function bool CheckReplacement(Actor Other, out byte bSuperRelevant) 
+function bool CheckReplacement(Actor Other, out byte bSuperRelevant)
 {
-	if (Other.IsA('KFHumanPawn'))
+	local KFHumanPawn KFHP;
+	
+	if(Other != None)
 	{
-		KFHumanPawn(Other).RequiredEquipment[0] = "KnifeShadowBladeMut.MutKnifeShadowBlade";
-		KFHumanPawn(Other).RequiredEquipment[1] = "Pistol9mmNinemmMut.Mut9mmNinemm";
-		KFHumanPawn(Other).RequiredEquipment[2] = "KFMod.Frag";
-		KFHumanPawn(Other).RequiredEquipment[3] = "KFMod.Syringe";
-		KFHumanPawn(Other).RequiredEquipment[4] = "KFMod.Welder";
+		if(Other.IsA('KFHumanPawn'))
+		{
+			KFHP = KFHumanPawn(Other);
+			KFHP.RequiredEquipment[0] = ""; // KnifeShadowBladeMut.KnifeShadowBlade
+			KFHP.RequiredEquipment[1] = ""; // Pistol9mmNinemmMut.SingleNinemmSingle
+			KFHP.RequiredEquipment[2] = "KFMod.Frag";
+			KFHP.RequiredEquipment[3] = "KFMod.Syringe";
+			KFHP.RequiredEquipment[4] = "KFMod.Welder";
+			Level.Game.Broadcast(None, "Now updating the defaults, yes");
+		}
 	}
 	return true;
-}*/
+}
 
 defaultproperties
 {
+	bAddToServerPackages=True
+	bAlwaysRelevant=True
     GroupName="KF-NEFGameMode"
     FriendlyName="NEFGameMode"
     Description="The New Evolution Freeroam Gamemode"

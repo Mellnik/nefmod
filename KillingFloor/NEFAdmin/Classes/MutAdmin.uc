@@ -1,20 +1,3 @@
-/*
-Title:           AdminPlus_v3 Mutator for Killing Floor
-Creator:         Rythmix@Gmail.com - 11/08/2004
-                 ported to Killing Floor by    RED-FROG  Red_Frog@web.de   May 30th, 2009
-WebSite:         http://rythmix.zclans.com
-                 http://www.levels4you.com
-Add'l Content:   Based off of the AdminCheats and AdminUtils
-                 mutators by mkhaos7 and James M. Poore Jr.
-Features:  		 TempAdmin, ChangeName, CustomLoaded1,2,3, Godon/off,
-				 GiveItem, PlayerSize, HeadSize, SetGrav, PrivMessage,
-				 Reset Score, Change Score, Ghost/Fly/Spider/Walk, Summon,
-				 Advanced Summon, Loaded, DNO, SloMo, Teleport
-				 Cause Event
-				-----------------------------------------------------------
-				 Partial Name Recognition, 'ALL' Names Recognition
-				 Applicable functions Work with Spectators, SuperAdmin
-*/
 class MutAdmin extends Mutator;   
 
 var config array<string> WeaponBase1;
@@ -22,7 +5,6 @@ var config array<string> WeaponBase2;
 var config array<string> WeaponBase3;
 var config array<string> SuperAdmin;
 var config int iSlapDamage;
-//var config int iMomentum;
 
 var config bool bAllowSummon, bAllowSlap, bAllowCombos, bAllowChangeScore, bAllowSetGravity, bAllowPrivMessage, bAllowChangeSize, bAllowGiveItem, bAllowLoaded, bAllowGod, bAllowGhost, bAllowCustomLoaded, bAllowFly, bAllowInvis, bAllowFatality, bAllowTempAdmin, bAllowCauseEvent, bAllowDNO, bAllowSpider, bAllowSloMo, bAllowChangeName, bAllowAdvancedSummon, bAllowTeleport;
 var localized string SummonDisplayText, SlapDisplayText, SlapDescText, CombosDisplayText, CombosDescText, PrivMessageDescText, PrivMessageDisplayText, ChangeScoreDescText, ChangeScoreDisplayText, SetGravityDisplayText, SetGravityDescText, ChangeSizeDisplayText, ChangeSizeDescText, GiveItemDisplayText, GiveItemDescText, LoadedDisplayText, CustomLoadedDisplayText, GodDisplayText, GhostDisplayText, SummonDescText, LoadedDescText, GodDescText, GhostDescText, FlyDisplayText, FlyDescText, InvisDisplayText, InvisDescText, FatalityDisplayText, FatalityDescText, ChangeNameDisplayText, ChangeNameDescText, TempAdminDisplayText, TempAdminDescText, TempAdminOffDisplayText, TempAdminOffDescText, CauseEventDisplayText, CauseEventDescText, DNODisplayText, DNODescText, SpiderDisplayText, SpiderDescText, SloMoDisplayText, SloMoDescText, AdvancedSummonDisplayText, CustomLoadedDescText, AdvancedSummonDescText, TeleportDisplayText, TeleportDescText;
@@ -60,130 +42,130 @@ static event string GetDescriptionText(string PropName)
 {
 	switch (PropName)
 	{
-		case "bAllowSummon":	return default.SummonDescText;
-		case "bAllowLoaded":	return default.LoadedDescText;
-		case "bAllowCustomLoaded":	return default.CustomLoadedDescText;
-		case "bAllowGiveItem":	return default.GiveItemDescText;
-		case "bAllowChangeScore":	return default.ChangeScoreDescText;
-		case "bAllowGod":	return default.GodDescText;
-		case "bAllowGhost":	return default.GhostDescText;
-		case "bAllowFly":	return default.FlyDescText;
-		case "bAllowSpider":	return default.SpiderDescText;
-		case "bAllowInvis":	return default.InvisDescText;
-		case "bAllowFatality":	return default.FatalityDescText;
-		case "bAllowTempAdmin":	return default.TempAdminDescText;
-		case "bAllowChangeName":	return default.ChangeNameDescText;
-		case "bAllowChangeSize":	return default.ChangeSizeDescText;
-		case "bAllowCauseEvent":	return default.CauseEventDescText;
-		case "bAllowDNO":	return default.DNODescText;
-		case "bAllowSpider":	return default.SpiderDescText;
-		case "bAllowSloMo":	return default.SloMoDescText;
-		case "bAllowSetGravity":	return default.SetGravityDescText;
-		case "bAllowAdvancedSummon":	return default.AdvancedSummonDescText;
-		case "bAllowTeleport":	return default.TeleportDescText;
-		case "bAllowPrivMessage":	return default.PrivMessageDescText;
-		case "bAllowCombos":	return default.CombosDescText;
-		case "bAllowSlap":	return default.SlapDescText;
+		case "bAllowSummon": return default.SummonDescText;
+		case "bAllowLoaded": return default.LoadedDescText;
+		case "bAllowCustomLoaded": return default.CustomLoadedDescText;
+		case "bAllowGiveItem": return default.GiveItemDescText;
+		case "bAllowChangeScore": return default.ChangeScoreDescText;
+		case "bAllowGod": return default.GodDescText;
+		case "bAllowGhost": return default.GhostDescText;
+		case "bAllowFly": return default.FlyDescText;
+		case "bAllowSpider": return default.SpiderDescText;
+		case "bAllowInvis": return default.InvisDescText;
+		case "bAllowFatality": return default.FatalityDescText;
+		case "bAllowTempAdmin": return default.TempAdminDescText;
+		case "bAllowChangeName": return default.ChangeNameDescText;
+		case "bAllowChangeSize": return default.ChangeSizeDescText;
+		case "bAllowCauseEvent": return default.CauseEventDescText;
+		case "bAllowDNO": return default.DNODescText;
+		case "bAllowSpider": return default.SpiderDescText;
+		case "bAllowSloMo": return default.SloMoDescText;
+		case "bAllowSetGravity": return default.SetGravityDescText;
+		case "bAllowAdvancedSummon": return default.AdvancedSummonDescText;
+		case "bAllowTeleport": return default.TeleportDescText;
+		case "bAllowPrivMessage": return default.PrivMessageDescText;
+		case "bAllowCombos": return default.CombosDescText;
+		case "bAllowSlap": return default.SlapDescText;
 	}
 
 	return Super.GetDescriptionText(PropName);
 }
 
-event PreBeginPlay(){
+event PreBeginPlay() {
     Super.PreBeginPlay();
     Level.Game.AccessControl.AdminClass = class'NEFAdmin.mod_admin';
     Level.Game.bAllowMPGameSpeed = true;
 }
 
-function bool SummonEnabled(){
+function bool SummonEnabled() {
   return bAllowSummon;
 }
 
-function bool LoadedEnabled(){
+function bool LoadedEnabled() {
   return bAllowLoaded;
 }
 
-function bool CustomLoadedEnabled(){
+function bool CustomLoadedEnabled() {
   return bAllowCustomLoaded;
 }
 
-function bool GiveItemEnabled(){
+function bool GiveItemEnabled() {
   return bAllowGiveItem;
 }
 
-function bool ChangeScoreEnabled(){
+function bool ChangeScoreEnabled() {
   return bAllowChangeScore;
 }
 
-function bool GhostEnabled(){
+function bool GhostEnabled() {
   return bAllowGhost;
 }
 
-function bool GodEnabled(){
+function bool GodEnabled() {
   return bAllowGod;
 }
 
-function bool FlyEnabled(){
+function bool FlyEnabled() {
   return bAllowFly;
 }
 
-function bool InvisEnabled(){
+function bool InvisEnabled() {
   return bAllowInvis;
 }
 
-function bool FatalityEnabled(){
+function bool FatalityEnabled() {
   return bAllowFatality;
 }
 
-function bool TempAdminEnabled(){
+function bool TempAdminEnabled() {
   return bAllowTempAdmin;
 }
 
-function bool ChangeNameEnabled(){
+function bool ChangeNameEnabled() {
   return bAllowChangeName;
 }
 
-function bool ChangeSizeEnabled(){
+function bool ChangeSizeEnabled() {
   return bAllowChangeSize;
 }
 
-function bool CauseEventEnabled(){
+function bool CauseEventEnabled() {
   return bAllowCauseEvent;
 }
 
-function bool DNOEnabled(){
+function bool DNOEnabled() {
   return bAllowDNO;
 }
 
-function bool SpiderEnabled(){
+function bool SpiderEnabled() {
   return bAllowSpider;
 }
 
-function bool SloMoEnabled(){
+function bool SloMoEnabled() {
   return bAllowSloMo;
 }
 
-function bool CombosEnabled(){
+function bool CombosEnabled() {
   return bAllowCombos;
 }
 
-function bool SlapEnabled(){
+function bool SlapEnabled() {
   return bAllowSlap;
 }
 
-function bool SetGravityEnabled(){
+function bool SetGravityEnabled() {
   return bAllowSetGravity;
 }
 
-function bool AdvancedSummonEnabled(){
+function bool AdvancedSummonEnabled() {
   return bAllowAdvancedSummon;
 }
 
-function bool TeleportEnabled(){
+function bool TeleportEnabled() {
   return bAllowTeleport;
 }
 
-function bool PrivMessageEnabled(){
+function bool PrivMessageEnabled() {
   return bAllowPrivMessage;
 }
 

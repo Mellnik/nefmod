@@ -5,9 +5,8 @@ class Merlin extends ROChopperCraft
     placeable;
 
 #exec OBJ LOAD FILE=..\KF_Vehicles_BD\Animations\BDVehiclesB.ukx
-#exec obj load file=..\KF_Vehicles_BD\Sounds\BDVehicles_A.uax
-#exec obj load file=..\Textures\kf_generic_t.utx
-
+#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Sounds\BDVehicles_A.uax
+#exec OBJ LOAD FILE=..\Textures\kf_generic_t.utx
 
 var Actor LastAttackedTarget;
 var() sound DropMineSound;
@@ -56,7 +55,7 @@ function ServerAltFire()
 function AltFire(optional float F)
 {
 	ServerAltFire();
-	log("Alt Fire");
+	//log("Alt Fire");
 	//Velocity.Z -= 1000;
 }
 
@@ -561,8 +560,8 @@ defaultproperties
      FlagBone="PlasmaGunAttachment"
      FlagRotation=(Yaw=32768)
      GroundSpeed=2000.000000
-     HealthMax=200.000000
-     Health=200
+     HealthMax=1000.000000
+     Health=1000
      Mesh=SkeletalMesh'BDVehiclesB.Merlinmesh'
      Skins(0)=Combiner'kf_generic_t.merlinhc3_cmb'
      Skins(1)=Texture'kf_generic_t.MerlinHC3InteriorDiffuse'
@@ -571,24 +570,24 @@ defaultproperties
      CollisionRadius=150.000000
      CollisionHeight=70.000000
      Begin Object Class=KarmaParamsRBFull Name=KParams0
-         KInertiaTensor(0)=1.000000
-         KInertiaTensor(3)=3.000000
-         KInertiaTensor(5)=3.500000
-         KCOMOffset=(X=-0.250000)
-         KLinearDamping=0.000000
-         KAngularDamping=0.000000
-         KStartEnabled=True
-         bKNonSphericalInertia=True
-         KActorGravScale=1.000000
-         bHighDetailOnly=False
-         bClientOnly=False
-         bKDoubleTickRate=True
-         bKStayUpright=True
-         bKAllowRotate=True
-         bDestroyOnWorldPenetrate=True
-         bDoSafetime=True
-         KFriction=0.500000
-         KImpactThreshold=300.000000
+	 KInertiaTensor(0)=1.000000
+	 KInertiaTensor(3)=3.000000
+	 KInertiaTensor(5)=3.500000
+	 KCOMOffset=(X=-0.250000)
+	 KLinearDamping=0.000000
+	 KAngularDamping=0.000000
+	 KStartEnabled=True
+	 bKNonSphericalInertia=True
+	 KActorGravScale=1.000000
+	 bHighDetailOnly=False
+	 bClientOnly=False
+	 bKDoubleTickRate=True
+	 bKStayUpright=True
+	 bKAllowRotate=True
+	 bDestroyOnWorldPenetrate=True
+	 bDoSafetime=True
+	 KFriction=0.500000
+	 KImpactThreshold=300.000000
      End Object
      KParams=KarmaParamsRBFull'KF_Vehicles_BD.Merlin.KParams0'	
 }

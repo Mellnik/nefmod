@@ -25,9 +25,6 @@ simulated function UpdateHud()
 	super.updatehud();
 }
 
-
-
-
 simulated function DrawHudPassA (Canvas C)
 {
 	local KFHumanPawn KFHPawn;

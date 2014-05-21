@@ -214,12 +214,6 @@ simulated function ChangeStuff(bool bDriverOnRight, bool bRightPassenger, float 
 }
 
 
-
-
-
-
-
-
 simulated event SVehicleUpdateParams()
 {
 	local int i;
@@ -595,7 +589,6 @@ function bool EncroachingOn(Actor Other)
 	}
 }
 
-
 /*
 
 // This will get called if we couldn't move a pawn out of the way.
@@ -614,8 +607,6 @@ function bool EncroachingOn(Actor Other)
 	}
 }
 */
-
-
 
 
 function TakeDamage( int Damage, Pawn instigatedBy, Vector hitlocation,
@@ -905,9 +896,9 @@ simulated function Tick(float dt)
 //==========================================================
 
 	if (fuel > 0)
-		{
-			bOutofgas = False;
-		}
+	{
+		bOutofgas = False;
+	}
 	
 	/*
 	else
@@ -918,19 +909,19 @@ simulated function Tick(float dt)
 */
      if ( Driver != None )
      {
-        	if (Fuel > 0.0)          //do we have gas?
-			{
-				if(level.netmode != NM_DedicatedServer)
-            		
-							Fuel-=0.03;
-					
-							else
-					
-							Fuel-=0.3;
-					
-			}
-	 
-        	else
+		if (Fuel > 0.0)          //do we have gas?
+		{
+			if(level.netmode != NM_DedicatedServer)
+				
+						Fuel-=0.03;
+				
+						else
+				
+						Fuel-=0.3;
+				
+		}
+ 
+		else
         {
             //log("==========> Sending Out of gas message!!!");
             AmbientSound=None;

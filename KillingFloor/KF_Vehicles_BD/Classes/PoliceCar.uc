@@ -27,14 +27,11 @@ function AltFire(optional float F)
 {
 }
 
-
 function VehicleFire(bool bWasAltFire)
 {
  	local int i;
 
-
-if(Level.NetMode != NM_DedicatedServer)
-
+	if(Level.NetMode != NM_DedicatedServer)
 	{
 		myPolFlashlightCoronab.Length = PolFlashlightCoronaOffset.Length;
 

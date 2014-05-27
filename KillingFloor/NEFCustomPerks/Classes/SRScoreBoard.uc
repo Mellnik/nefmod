@@ -120,7 +120,7 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	local PlayerReplicationInfo PRI, OwnerPRI;
 	local KFPlayerReplicationInfo KFPRI;
 	local KF_StoryPRI StoryPRI;
-	local int i, FontReduction, NetXPos, PlayerCount, HeaderOffsetY, HeadFoot, MessageFoot, PlayerBoxSizeY, BoxSpaceY, NameXPos, BoxTextOffsetY, OwnerOffset, HealthXPos, BoxXPos,KillsXPos, TitleYPos, BoxWidth, VetXPos, NotShownCount;
+	local int i, FontReduction, NetXPos, PlayerCount, HeaderOffsetY, HeadFoot, MessageFoot, PlayerBoxSizeY, BoxSpaceY, NameXPos, BoxTextOffsetY, OwnerOffset, HealthXPos, BoxXPos,KillsXPos, TitleYPos, BoxWidth, VetXPos, NotShownCount, ArmorXPos, WeightXPos;
 	local float XL,YL;
 	local float deathsXL, KillsXL, NetXL, HealthXL, MaxNamePos, KillWidthX, CashXPos, TimeXPos, PProgressXS, StoryIconXPos;
 	local Material VeterancyBox,StarBox;
@@ -176,10 +176,8 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	Canvas.DrawColor.R = 53;
 	Canvas.DrawColor.G = 242;
 	Canvas.DrawColor.B = 110;
-	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 20.0, (HeaderOffsetY - (YL + 25.0)));
-	Canvas.DrawTextClipped("www.nefserver.net - New Evolution Freeoram (nefmod)");
-	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 50.0, (HeaderOffsetY - (YL + 17.0)));
-	Canvas.DrawTextClipped("NEF Vehicle Server | 31.204.152.246:7707");
+	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 20.0, (HeaderOffsetY - (YL + 15.0)));
+	Canvas.DrawTextClipped("www.nefserver.net");
 	Canvas.DrawColor.R = 245;
 	Canvas.DrawColor.G = 144;
 	Canvas.DrawColor.B = 37;
@@ -239,11 +237,13 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	BoxWidth = Canvas.ClipX - 2 * BoxXPos;
 	VetXPos = BoxXPos + 0.0001 * BoxWidth;
 	NameXPos = VetXPos + PlayerBoxSizeY*1.75f;
-	StoryIconXPos = BoxXPos + 0.48 * BoxWidth;
-	KillsXPos = BoxXPos + 0.55 * BoxWidth;
-	CashXPos = BoxXPos + 0.65 * BoxWidth;
-	HealthXpos = BoxXPos + 0.75 * BoxWidth;
-	TimeXPos = BoxXPos + 0.87 * BoxWidth;
+	StoryIconXPos = BoxXPos + 0.28 * BoxWidth;
+	KillsXPos = BoxXPos + 0.35 * BoxWidth;
+	CashXPos = BoxXPos + 0.45 * BoxWidth;
+	HealthXpos = BoxXPos + 0.55 * BoxWidth;
+	ArmorXpos = BoxXPos + 0.65 * BoxWidth;
+	WeightXpos = BoxXPos + 0.75 * BoxWidth;
+	TimeXPos = BoxXPos + 0.85 * BoxWidth;
 	NetXPos = BoxXPos + 0.996 * BoxWidth;
 	PProgressXS = BoxWidth * 0.1f;
 
@@ -286,10 +286,18 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	Canvas.TextSize(TimeText, XL, YL);
 	Canvas.SetPos(TimeXPos - 0.5 * XL, TitleYPos);
 	Canvas.DrawTextClipped("Time");
+	
+	Canvas.TextSize("Shield", XL, YL);
+	Canvas.SetPos(ArmorXPos - 0.5 * XL, TitleYPos);
+	Canvas.DrawTextClipped("Shield");
+	
+	Canvas.TextSize("Weight", XL, YL);
+	Canvas.SetPos(WeightXPos - 0.5 * XL, TitleYPos);
+	Canvas.DrawTextClipped("Weight");
 
 	Canvas.SetPos(HealthXPos - 0.5 * HealthXL, TitleYPos);
 	Canvas.DrawTextClipped(HealthText);
-
+	
 	Canvas.Style = ERenderStyle.STY_Normal;
 	Canvas.DrawColor = HUDClass.default.WhiteColor;
 	Canvas.SetPos(0.5 * Canvas.ClipX, HeaderOffsetY + 4);
@@ -404,6 +412,18 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 		S = string(int(PRI.Score));
 		Canvas.TextSize(S, XL, YL);
 		Canvas.SetPos(CashXPos-XL*0.5f, (PlayerBoxSizeY + BoxSpaceY)*i + BoxTextOffsetY);
+		Canvas.DrawText(S,true);
+		
+		// draw shield
+		S = string(SRPlayerReplicationInfo(PRI).PlayerArmor);
+		Canvas.TextSize(S, XL, YL);
+		Canvas.SetPos(ArmorXPos-XL*0.5f, (PlayerBoxSizeY + BoxSpaceY)*i + BoxTextOffsetY);
+		Canvas.DrawText(S,true);
+		
+		// draw weight
+		S = SRPlayerReplicationInfo(PRI).PlayerWeight;
+		Canvas.TextSize(S, XL, YL);
+		Canvas.SetPos(WeightXPos-XL*0.5f, (PlayerBoxSizeY + BoxSpaceY)*i + BoxTextOffsetY);
 		Canvas.DrawText(S,true);
 
 		// draw time

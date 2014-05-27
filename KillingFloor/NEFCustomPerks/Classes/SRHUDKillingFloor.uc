@@ -31,6 +31,68 @@ var transient float OldDilation,CurrentBW,DesiredBW,NextLevelTimer,LevelProgress
 var bool bUseBloom,bUseMotionBlur,bDisplayingProgress;
 var transient bool bFadeBW;
 
+struct SHitInfo
+{
+	var string Text;
+	var float LastHit;
+};
+
+var SHitInfo SHitText;
+var byte SHitInt;
+
+simulated function ShowDamage(int D, float LH)
+{
+	if(Level.TimeSeconds - SHitText.LastHit > 5)
+		SHitText.Text = string(D);
+	else
+		SHitText.Text = string(int(SHitText.Text)+D);
+		
+	SHitText.LastHit = LH;	
+}
+
+simulated function HandleSHit(Canvas C)
+{
+	local int RColor, GColor, BColor;
+	local byte FontSize;
+	local float fadetimeB, fadetimeG, fadetimeR, XL, YL;
+
+	//Font Size
+	FontSize = 3;
+
+	C.Font = LoadFont(FontSize);
+	
+	if(5 < Level.TimeSeconds - SHitText.LastHit)
+		return;
+
+	C.Style = ERenderStyle.STY_Translucent;//STY_Normal
+
+	//Color
+    RColor = 0;
+    GColor = 0;
+    BColor = 255;
+
+	fadetimeR = (Level.TimeSeconds - SHitText.LastHit) * (RColor / 5);
+	fadetimeG = (Level.TimeSeconds - SHitText.LastHit) * (GColor / 5);
+	fadetimeB = (Level.TimeSeconds - SHitText.LastHit) * (BColor / 5);
+		
+	C.StrLen(SHitText.Text,XL,YL);
+		
+	//Position X Y
+	C.SetPos( (c.clipx-XL)*0.5, c.clipy*0.1);
+
+	C.DrawColor.R = RColor - fadetimeR;
+	C.DrawColor.G = GColor - fadetimeG;
+	C.DrawColor.B = BColor - fadetimeB;
+
+	C.DrawText(SHitText.Text);
+}
+
+simulated event PostRender( canvas Canvas )
+{
+   super.PostRender(canvas);
+   HandleSHit(canvas);
+}
+
 simulated function PostBeginPlay()
 {
 	local Font MyFont;

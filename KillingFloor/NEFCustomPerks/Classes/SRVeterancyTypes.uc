@@ -174,32 +174,39 @@ static function bool AllowWeaponInTrader( class<KFWeaponPickup> Pickup, KFPlayer
 
 static function byte PreDrawPerk( Canvas C, byte Level, out Material PerkIcon, out Material StarIcon )
 {
-	if ( Level>15 )
+	if ( Level>40 )
 	{
 		PerkIcon = Default.OnHUDGoldIcon;
 		StarIcon = Class'HUDKillingFloor'.Default.VetStarGoldMaterial;
-		Level-=15;
-		C.SetDrawColor(64, 64, 255, C.DrawColor.A);
+		Level-=40;
+		C.SetDrawColor(0, 255, 0, C.DrawColor.A);
+	}
+	else if ( Level>30 )
+	{
+		PerkIcon = Default.OnHUDGoldIcon;
+		StarIcon = Class'HUDKillingFloor'.Default.VetStarGoldMaterial;
+		Level-=30;
+		C.SetDrawColor(255, 255, 255, C.DrawColor.A);
+	}
+	else if ( Level>20 )
+	{
+		PerkIcon = Default.OnHUDGoldIcon;
+		StarIcon = Class'HUDKillingFloor'.Default.VetStarGoldMaterial;
+		Level-=20;
+		C.SetDrawColor(255, 200, 0, C.DrawColor.A);
 	}
 	else if ( Level>10 )
 	{
-		PerkIcon = Default.OnHUDGoldIcon;
-		StarIcon = Class'HUDKillingFloor'.Default.VetStarGoldMaterial;
+		PerkIcon = Default.OnHUDIcon;
+		StarIcon = Class'HUDKillingFloor'.Default.VetStarMaterial;
 		Level-=10;
-		C.SetDrawColor(0, 255, 0, C.DrawColor.A);
-	}
-	else if ( Level>5 )
-	{
-		PerkIcon = Default.OnHUDGoldIcon;
-		StarIcon = Class'HUDKillingFloor'.Default.VetStarGoldMaterial;
-		Level-=5;
 		C.SetDrawColor(255, 255, 255, C.DrawColor.A);
 	}
 	else
 	{
-		PerkIcon = Default.OnHUDIcon;
-		StarIcon = Class'HUDKillingFloor'.Default.VetStarMaterial;
-		C.SetDrawColor(255, 255, 255, C.DrawColor.A);
+		PerkIcon = Default.OnHUDGoldIcon;
+		StarIcon = Class'HUDKillingFloor'.Default.VetStarGoldMaterial;
+		C.SetDrawColor(0, 0, 255, C.DrawColor.A);
 	}
 	return Min(Level,15);
 }

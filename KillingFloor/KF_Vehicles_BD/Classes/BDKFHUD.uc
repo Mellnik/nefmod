@@ -1,4 +1,4 @@
-Class BDKFHUD extends HUDKillingFloor;
+Class BDKFHUD extends SRHUDKillingFloor;
 
 var()   SpriteWidget			MyFlameIcon;
 var()   NumericWidget           FuelDigits;
@@ -25,7 +25,10 @@ simulated function UpdateHud()
 	super.updatehud();
 }
 
-simulated function DrawHudPassA (Canvas C)
+
+
+
+/*simulated function DrawHudPassA (Canvas C)
 {
 	local KFHumanPawn KFHPawn;
 	local Material TempMaterial;
@@ -240,7 +243,7 @@ simulated function DrawHudPassA (Canvas C)
 		DrawNumericWidget(C, CashDigits, DigitsBig);
 	}
 
-	if ( KFPRI != none && KFPRI.ClientVeteranSkill != none && KFPRI.ClientVeteranSkill.default.OnHUDIcon != none )
+	/*if ( KFPRI != none && KFPRI.ClientVeteranSkill != none && KFPRI.ClientVeteranSkill.default.OnHUDIcon != none )
 	{
 		TempMaterial = KFPRI.ClientVeteranSkill.default.OnHUDIcon;
 
@@ -260,6 +263,48 @@ simulated function DrawHudPassA (Canvas C)
 			C.DrawTile(VetStarMaterial, VetStarSize, VetStarSize, 0, 0, VetStarMaterial.MaterialUSize(), VetStarMaterial.MaterialVSize());
 
 			TempY -= VetStarSize;
+		}
+	}*/
+	
+	if ( SV!=None )
+	{
+		TempSize = 36 * VeterancyMatScaleFactor * 1.4;
+		TempX = C.ClipX * 0.007;
+		TempY = C.ClipY * 0.93 - TempSize;
+		C.DrawColor = WhiteColor;
+
+		TempLevel = KFPlayerReplicationInfo(PawnOwnerPRI).ClientVeteranSkillLevel;
+		if( ClientRep!=None && (TempLevel+1)<ClientRep.MaximumLevel )
+		{
+			// Draw progress bar.
+			bDisplayingProgress = true;
+			if( NextLevelTimer<Level.TimeSeconds )
+			{
+				NextLevelTimer = Level.TimeSeconds+3.f;
+				LevelProgressBar = SV.Static.GetTotalProgress(ClientRep,TempLevel+1);
+			}
+			Class'SRScoreBoard'.Static.DrawProgressBar(C,TempX,TempY-TempSize*0.12f,TempSize*2.f,TempSize*0.1f,VisualProgressBar);
+		}
+
+		C.DrawColor.A = 192;
+		TempLevel = SV.Static.PreDrawPerk(C,TempLevel,TempMaterial,TempStarMaterial);
+
+		C.SetPos(TempX, TempY);
+		C.DrawTile(TempMaterial, TempSize, TempSize, 0, 0, TempMaterial.MaterialUSize(), TempMaterial.MaterialVSize());
+
+		TempX += (TempSize - VetStarSize);
+		TempY += (TempSize - (2.0 * VetStarSize));
+
+		for ( i = 0; i < TempLevel; i++ )
+		{
+			C.SetPos(TempX, TempY-(Counter*VetStarSize*0.8f));
+			C.DrawTile(TempStarMaterial, VetStarSize, VetStarSize, 0, 0, TempStarMaterial.MaterialUSize(), TempStarMaterial.MaterialVSize());
+
+			if( ++Counter==5 )
+			{
+				Counter = 0;
+				TempX+=VetStarSize;
+			}
 		}
 	}
 
@@ -283,7 +328,7 @@ simulated function DrawHudPassA (Canvas C)
 	{
 		DrawInventory(C);
 	}
-}
+}*/
 
 defaultproperties
 {

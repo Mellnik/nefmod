@@ -140,6 +140,7 @@ if ( shouldCreate() )
 		//log("Spawn car");
 		
           if ( CreatedVehicle != None )
+
 	  {
                VehicleCount++;
                MaxVehicleCount--;
@@ -175,26 +176,30 @@ event VehicleDestroyed(Vehicle V)
 simulated function Tick(float DeltaTime)
 {
 	//log("tick");
-    if ( bWaiting )
-    {
+     if ( bWaiting )
+     {
 		//log("bwaiting");
-		if ( ( VehicleCount < MaxVehicleCount ) )
-        {
+ 
+          if ( ( VehicleCount < MaxVehicleCount ) )
+                    {
 						//log("VehicleCount < MaxVehicleCount");
  //		    if ( Tag != '' && RandomTags.length > 0 )
  ///             		 Tag = RandomTags[ int( FRand() * RandomTags.length ) ].mytags;
-               
-			bWaiting = false;
-            FactoryTime = Level.TimeSeconds;
-            SpawnItNow();
-        }
-        else
-        {
-			return;
-		}
-    }
+
+                              
+                              bWaiting = false;
+                              FactoryTime = Level.TimeSeconds;
+                              SpawnItNow();
+                        
+                    }
+                    else
+                    {
+                    return;
+		    }
+     }
 	return;
 }
+
 
 /*
 function bool PlayerCanSeePoint(vector TestLocation)
@@ -241,11 +246,12 @@ function bool PlayerCanSeePoint(vector TestLocation)
 */
 
 function bool shouldCreate() {
-	if (BDGameType(Level.Game).TooManyCars(none)) {
+
+   if (BDGameType(Level.Game).TooManyCars(none)){
 		//log("Too many cars");
-		return False;
+       return False;
 	}
-	return True;
+	Return True;
 }
 
 defaultproperties

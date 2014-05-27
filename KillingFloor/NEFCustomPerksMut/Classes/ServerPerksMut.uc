@@ -296,6 +296,9 @@ final function ImplementPackage( Object O )
 
 function bool CheckReplacement(Actor Other, out byte bSuperRelevant)
 {
+	if( Controller(Other) !=None )
+		Controller(Other).PlayerReplicationInfoClass = Class'SRPlayerReplicationInfo';
+		
 	if( PlayerController(Other)!=None )
 	{
 		PendingPlayers[PendingPlayers.Length] = PlayerController(Other);
@@ -588,7 +591,7 @@ static event string GetDescriptionText(string PropName)
 
 defaultproperties
 {
-	FriendlyName="Server Veterancy Handler V7"
+	FriendlyName="NS Server Veterancy Handler V7"
 	Description="Use perks as privately on this server config instead of getting from global steam stats."
 	GroupName="KF-Stats"
 	VersionNumber=710
@@ -601,7 +604,7 @@ defaultproperties
 	Perks(5)="NEFCustomPerksP.SRVetSharpshooter"
 	Perks(6)="NEFCustomPerksP.SRVetDemolitions"
 	MinPerksLevel=-1
-	MaxPerksLevel=6
+	MaxPerksLevel=50
 	RequirementScaling=1
 	RemotePort=21
 	RemoteDatabaseURL="127.0.0.1"

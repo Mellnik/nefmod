@@ -8,7 +8,12 @@ var bool bUseAdvBehindview;
 replication
 {
 	reliable if( Role==ROLE_Authority )
-		bUseAdvBehindview;
+		bUseAdvBehindview, OnPlayerDamaged;
+}
+
+simulated function OnPlayerDamaged(int Damage)
+{	
+	SRHUDKillingfloor(myHUD).ShowDamage(Damage, Level.TimeSeconds);
 }
 
 simulated function UpdateHintManagement(bool bUseHints)

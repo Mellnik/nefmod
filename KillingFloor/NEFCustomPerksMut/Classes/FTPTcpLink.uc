@@ -472,7 +472,7 @@ state DownloadStats extends ConnectionBase
 	}
 	final function InitDataConnection( string S )
 	{
-		while( PendingLoaders.Length>0 && PendingLoaders[0]==None && PendingLoaders[0].MyStatsObject==None) // EDIT
+		while( PendingLoaders.Length>0 && PendingLoaders[0]==None )
 			PendingLoaders.Remove(0,1);
 		if( PendingLoaders.Length==0 )
 		{

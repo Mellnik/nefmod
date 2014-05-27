@@ -160,35 +160,31 @@ function Timer()
 final function RepCopyStats()
 {
 	// Copy all stats from data object for client replication
-	
-	if(MyStatsObject != None) // EDIT
-	{
-		Rep.RDamageHealedStat = MyStatsObject.DamageHealedStat;
-		Rep.RWeldingPointsStat = MyStatsObject.WeldingPointsStat;
-		Rep.RShotgunDamageStat = MyStatsObject.ShotgunDamageStat;
-		Rep.RHeadshotKillsStat = MyStatsObject.HeadshotKillsStat;
-		Rep.RStalkerKillsStat = MyStatsObject.StalkerKillsStat;
-		Rep.RBullpupDamageStat = MyStatsObject.BullpupDamageStat;
-		Rep.RMeleeDamageStat = MyStatsObject.MeleeDamageStat;
-		Rep.RFlameThrowerDamageStat = MyStatsObject.FlameThrowerDamageStat;
-		Rep.RSelfHealsStat = MyStatsObject.SelfHealsStat;
-		Rep.RSoleSurvivorWavesStat = MyStatsObject.SoleSurvivorWavesStat;
-		Rep.RCashDonatedStat = MyStatsObject.CashDonatedStat;
-		Rep.RFeedingKillsStat = MyStatsObject.FeedingKillsStat;
-		Rep.RBurningCrossbowKillsStat = MyStatsObject.BurningCrossbowKillsStat;
-		Rep.RGibbedFleshpoundsStat = MyStatsObject.GibbedFleshpoundsStat;
-		Rep.RStalkersKilledWithExplosivesStat = MyStatsObject.StalkersKilledWithExplosivesStat;
-		Rep.RGibbedEnemiesStat = MyStatsObject.GibbedEnemiesStat;
-		Rep.RBloatKillsStat = MyStatsObject.BloatKillsStat;
-		Rep.RTotalZedTimeStat = MyStatsObject.TotalZedTimeStat;
-		Rep.RSirenKillsStat = MyStatsObject.SirenKillsStat;
-		Rep.RKillsStat = MyStatsObject.KillsStat;
-		Rep.RExplosivesDamageStat = MyStatsObject.ExplosivesDamageStat;
-		Rep.TotalPlayTime = MyStatsObject.TotalPlayTime;
-		Rep.WinsCount = MyStatsObject.WinsCount;
-		Rep.LostsCount = MyStatsObject.LostsCount;
-		MyStatsObject.GetCustomValues(Rep.CustomLink);
-	}
+	Rep.RDamageHealedStat = MyStatsObject.DamageHealedStat;
+	Rep.RWeldingPointsStat = MyStatsObject.WeldingPointsStat;
+	Rep.RShotgunDamageStat = MyStatsObject.ShotgunDamageStat;
+	Rep.RHeadshotKillsStat = MyStatsObject.HeadshotKillsStat;
+	Rep.RStalkerKillsStat = MyStatsObject.StalkerKillsStat;
+	Rep.RBullpupDamageStat = MyStatsObject.BullpupDamageStat;
+	Rep.RMeleeDamageStat = MyStatsObject.MeleeDamageStat;
+	Rep.RFlameThrowerDamageStat = MyStatsObject.FlameThrowerDamageStat;
+	Rep.RSelfHealsStat = MyStatsObject.SelfHealsStat;
+	Rep.RSoleSurvivorWavesStat = MyStatsObject.SoleSurvivorWavesStat;
+	Rep.RCashDonatedStat = MyStatsObject.CashDonatedStat;
+	Rep.RFeedingKillsStat = MyStatsObject.FeedingKillsStat;
+	Rep.RBurningCrossbowKillsStat = MyStatsObject.BurningCrossbowKillsStat;
+	Rep.RGibbedFleshpoundsStat = MyStatsObject.GibbedFleshpoundsStat;
+	Rep.RStalkersKilledWithExplosivesStat = MyStatsObject.StalkersKilledWithExplosivesStat;
+	Rep.RGibbedEnemiesStat = MyStatsObject.GibbedEnemiesStat;
+	Rep.RBloatKillsStat = MyStatsObject.BloatKillsStat;
+	Rep.RTotalZedTimeStat = MyStatsObject.TotalZedTimeStat;
+	Rep.RSirenKillsStat = MyStatsObject.SirenKillsStat;
+	Rep.RKillsStat = MyStatsObject.KillsStat;
+	Rep.RExplosivesDamageStat = MyStatsObject.ExplosivesDamageStat;
+	Rep.TotalPlayTime = MyStatsObject.TotalPlayTime;
+	Rep.WinsCount = MyStatsObject.WinsCount;
+	Rep.LostsCount = MyStatsObject.LostsCount;
+	MyStatsObject.GetCustomValues(Rep.CustomLink);
 }
 
 function ServerSelectPerkName( name N )

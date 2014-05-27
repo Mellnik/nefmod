@@ -1,8 +1,7 @@
 class SRScoreBoard extends KFScoreBoard;
 
 #exec TEXTURE IMPORT FILE="Textures\Shield.pcx" NAME="I_AdminShield" GROUP="Icons" MIPS=0 MASKED=1
-//#exec TEXTURE IMPORT FILE="Textures\nef.pcx" NAME="T_NEFLogo" MIPS=0 MASKED=1
-#exec OBJ LOAD FILE=..\NEFCustoms\Textures\NEFCustoms_T.utx
+//#exec OBJ LOAD FILE=..\NEFCustoms\Textures\NEFCustoms_T.utx
 
 var bool bDrawLevelDigits;
 var byte FrameCounter;
@@ -19,6 +18,7 @@ simulated static final function Material GetCountryFlag( PlayerReplicationInfo P
 	}
 	return PRI.Skins[0];
 }
+
 simulated static final function float DrawCountryName( Canvas C, PlayerReplicationInfo PRI, float X, float Y, optional byte MaxLen )
 {
 	local float XL,YL,Result;
@@ -67,6 +67,7 @@ simulated static final function float DrawCountryName( Canvas C, PlayerReplicati
 	C.TextSize(S,Result,XL);
 	return Result + YL;
 }
+
 simulated static final function TextSizeCountry( Canvas C, PlayerReplicationInfo PRI, out float XL, out float YL )
 {
 	local float XS;
@@ -176,8 +177,8 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	Canvas.DrawColor.R = 53;
 	Canvas.DrawColor.G = 242;
 	Canvas.DrawColor.B = 110;
-	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 20.0, (HeaderOffsetY - (YL + 15.0)));
-	Canvas.DrawTextClipped("www.nefserver.net");
+	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 30.0, (HeaderOffsetY - (YL + 15.0)));
+	Canvas.DrawTextClipped("www.nefserver.net - Vehicle Server (nefmod)");
 	Canvas.DrawColor.R = 245;
 	Canvas.DrawColor.G = 144;
 	Canvas.DrawColor.B = 37;

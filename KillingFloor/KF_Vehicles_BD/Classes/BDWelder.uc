@@ -174,10 +174,10 @@ simulated function Tick(float dt)
 	}
 
 	else if (BDWeldFire(FireMode[FireModeArray]).LastHitActorB == none
-		|| BDWeldFire(FireMode[FireModeArray]).LastHitActorB != none  
-		|| BDWeldFire(FireMode[FireModeArray]).LastHitActorH != none  
-		|| BDWeldFire(FireMode[FireModeArray]).LastHitActorM != none  
-		&& VSize(WeldFire(FireMode[FireModeArray]).LastHitActor.Location - Owner.Location) > (weaponRange * 2.5) && !bNoTarget )
+		&& BDWeldFire(FireMode[FireModeArray]).LastHitActorB == none  
+		&& BDWeldFire(FireMode[FireModeArray]).LastHitActorH == none  
+		&& BDWeldFire(FireMode[FireModeArray]).LastHitActorM == none  
+		/*&& VSize(WeldFire(FireMode[FireModeArray]).LastHitActor.Location - Owner.Location) > (weaponRange * 2.5) && !bNoTarget*/ )
 	{
 		if( ScriptedScreen==None )
 			InitMaterials();

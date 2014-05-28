@@ -119,7 +119,9 @@ simulated Function Timer()
 			
 			HitActor.TakeDamage(0, Instigator, HitLocation , vector(PointRot),hitDamageClass);
 			Spawn(class'KFWelderHitEffect',,, AdjustedLocation, rotator(HitLocation - StartTrace));	
-		}		
+		}
+
+		
 	}
 }
 
@@ -235,13 +237,18 @@ function bool AllowFire()
 		{
 			KFPlayerController(Instigator.Controller).CheckForHint(54);
 
-			if ( FailTime + 0.5 < Level.TimeSeconds )
+			if ( FailTime + 1 < Level.TimeSeconds )
 			{
 				PlayerController(Instigator.Controller).ClientMessage(NoWeldTargetMessage, 'CriticalEvent');
 				FailTime = Level.TimeSeconds;
 			}
 
 		}
+		
+		LastHitActor = none;
+		LastHitActorB = none;
+		LastHitActorH = none;
+		LastHitActorM = none;
 
 		return false;
 	}
@@ -249,7 +256,18 @@ function bool AllowFire()
 	if(RepairTarget != none && RepairTarget.health >= RepairTarget.HealthMax)
 	{
 		if( PlayerController(Instigator.controller)!=None )
-			PlayerController(Instigator.controller).ClientMessage(NoHealTargetMessage, 'CriticalEvent');
+		{
+			if ( FailTime + 1 < Level.TimeSeconds )
+			{
+				PlayerController(Instigator.controller).ClientMessage(NoHealTargetMessage, 'CriticalEvent');
+				FailTime = Level.TimeSeconds;
+			}
+		}
+		
+		LastHitActor = none;
+		LastHitActorB = none;
+		LastHitActorH = none;
+		LastHitActorM = none;
 	
 		return false;
 	}
@@ -257,7 +275,18 @@ function bool AllowFire()
 	if(RepairHuman != none && RepairHuman.ShieldStrength >= 100)
 	{
 		if( PlayerController(Instigator.controller)!=None )
-			PlayerController(Instigator.controller).ClientMessage(NoHealTargetMessage, 'CriticalEvent');
+		{
+			if ( FailTime + 1 < Level.TimeSeconds )
+			{
+				PlayerController(Instigator.controller).ClientMessage(NoHealTargetMessage, 'CriticalEvent');
+				FailTime = Level.TimeSeconds;
+			}
+		}
+		
+		LastHitActor = none;
+		LastHitActorB = none;
+		LastHitActorH = none;
+		LastHitActorM = none;
 	
 		return false;
 	}
@@ -265,7 +294,18 @@ function bool AllowFire()
 	if(RepairMerlin != none && RepairMerlin.health >= RepairMerlin.HealthMax)
 	{
 		if( PlayerController(Instigator.controller)!=None )
-			PlayerController(Instigator.controller).ClientMessage(NoHealTargetMessage, 'CriticalEvent');
+		{
+			if ( FailTime + 1 < Level.TimeSeconds )
+			{
+				PlayerController(Instigator.controller).ClientMessage(NoHealTargetMessage, 'CriticalEvent');
+				FailTime = Level.TimeSeconds;
+			}
+		}
+		
+		LastHitActor = none;
+		LastHitActorB = none;
+		LastHitActorH = none;
+		LastHitActorM = none;
 	
 		return false;
 	}
@@ -273,7 +313,18 @@ function bool AllowFire()
 	if(WeldTarget != None && WeldTarget.bDisallowWeld)
 	{
 		if( PlayerController(Instigator.controller)!=None )
-			PlayerController(Instigator.controller).ClientMessage(CantWeldTargetMessage, 'CriticalEvent');
+		{
+			if ( FailTime + 1 < Level.TimeSeconds )
+			{
+				PlayerController(Instigator.controller).ClientMessage(NoHealTargetMessage, 'CriticalEvent');
+				FailTime = Level.TimeSeconds;
+			}
+		}
+		
+		LastHitActor = none;
+		LastHitActorB = none;
+		LastHitActorH = none;
+		LastHitActorM = none;
 
 		return false;
 	}	

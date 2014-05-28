@@ -36,8 +36,11 @@ function Timer()
 	}
 	else 
 	{
-		PlayerArmor = C.Pawn.Shieldstrength;	
-		PlayerWeight = string(int(KFHumanPawn(C.Pawn).CurrentWeight))$"/"$string(int(KFHumanPawn(C.Pawn).MaxCarryWeight));
+		PlayerArmor = C.Pawn.Shieldstrength;
+		if(KFHumanPawn(C.Pawn)!=None)
+			PlayerWeight = string(int(KFHumanPawn(C.Pawn).CurrentWeight))$"/"$string(int(KFHumanPawn(C.Pawn).MaxCarryWeight));
+		else
+			PlayerWeight = string(int(KFHumanPawn(Vehicle(C.Pawn).Driver).CurrentWeight))$"/"$string(int(KFHumanPawn(Vehicle(C.Pawn).Driver).MaxCarryWeight));
 	}
 	
 

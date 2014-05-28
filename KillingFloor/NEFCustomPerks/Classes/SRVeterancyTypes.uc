@@ -206,7 +206,7 @@ static function byte PreDrawPerk( Canvas C, byte Level, out Material PerkIcon, o
 	{
 		PerkIcon = Default.OnHUDGoldIcon;
 		StarIcon = Class'HUDKillingFloor'.Default.VetStarGoldMaterial;
-		C.SetDrawColor(5, 57, 96, C.DrawColor.A);
+		C.SetDrawColor(16, 158, 208, C.DrawColor.A);
 	}
 	return Min(Level,15);
 }

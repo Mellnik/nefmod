@@ -79,13 +79,13 @@ simulated function HandleSHit(Canvas C)
 	C.StrLen(SHitText.Text,XL,YL);
 		
 	//Position X Y
-	C.SetPos( (c.clipx-XL)*0.5, c.clipy*0.1);
+	C.SetPos((c.clipx - XL) * 0.5, c.clipy * 0.1);
 
 	C.DrawColor.R = RColor - fadetimeR;
 	C.DrawColor.G = GColor - fadetimeG;
 	C.DrawColor.B = BColor - fadetimeB;
 
-	S = "+"$string(SHitText.Text);
+	S = "+" $ SHitText.Text $ " DMG";
 	C.DrawText(S);
 }
 

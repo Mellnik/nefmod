@@ -6,28 +6,28 @@ static function int GetPerkProgressInt( ClientPerkRepLink StatOther, out int Fin
 	switch( CurLevel )
 	{
 	case 0:
-		FinalInt = 100;
+		FinalInt = 10;
 		break;
 	case 1:
-		FinalInt = 200;
+		FinalInt = 100;
 		break;
 	case 2:
-		FinalInt = 750;
+		FinalInt = 150;
 		break;
 	case 3:
-		FinalInt = 4000;
+		FinalInt = 225;
 		break;
 	case 4:
-		FinalInt = 12000;
+		FinalInt = 300;
 		break;
 	case 5:
-		FinalInt = 25000;
+		FinalInt = 500;
 		break;
 	case 6:
-		FinalInt = 100000;
+		FinalInt = 1000;
 		break;
 	default:
-		FinalInt = 100000+GetDoubleScaling(CurLevel,20000);
+		FinalInt = 1000+GetDoubleScaling(CurLevel,20000);
 	}
 	return Min(StatOther.RDamageHealedStat,FinalInt);
 }

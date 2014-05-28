@@ -13,16 +13,11 @@ var bool                bRepairing;
 
 // Scripted Nametag vars
 
-
-
 // Speech
-
-
 
 var () int HealBoostAmount;
 Const MaxAmmoCount=500;
 var float RegenTimer;
-
 
 function byte BestMode()
 {
@@ -100,7 +95,6 @@ simulated function InitMaterials()
 	}
 }
 
-
 simulated function Tick(float dt)
 {
 	local KFDoorMover LastDoorHitActor;
@@ -172,7 +166,6 @@ simulated function Tick(float dt)
 			}
 		}
 	}
-
 	else if (BDWeldFire(FireMode[FireModeArray]).LastHitActorB == none
 		&& BDWeldFire(FireMode[FireModeArray]).LastHitActorB == none  
 		&& BDWeldFire(FireMode[FireModeArray]).LastHitActorH == none  
@@ -202,7 +195,6 @@ simulated function float ChargeBar()
 {
 	return FMin(1, (AmmoAmount(0))/(FireMode[0].AmmoClass.Default.MaxAmmo));
 }
-
 
 simulated event RenderTexture(ScriptedTexture Tex)
 {
@@ -235,8 +227,6 @@ simulated event RenderTexture(ScriptedTexture Tex)
 	}
 }
 
-
-
 simulated function PostBeginPlay()
 {
 	Super.PostBeginPlay();
@@ -251,6 +241,6 @@ defaultproperties
      HealPauseMax=3
      HealBoostAmount=5
      FireModeClass(0)=Class'KF_Vehicles_BD.BDWeldFire'
-	 ItemName="Vehicle Welder"
+	 ItemName="NEF Multi Welder"
      PickupClass=Class'KF_Vehicles_BD.BDWelderPickup'
 }

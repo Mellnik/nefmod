@@ -55,6 +55,7 @@ simulated function HandleSHit(Canvas C)
 	local int RColor, GColor, BColor;
 	local byte FontSize;
 	local float fadetimeB, fadetimeG, fadetimeR, XL, YL;
+	local string S;
 
 	//Font Size
 	FontSize = 3;
@@ -67,9 +68,9 @@ simulated function HandleSHit(Canvas C)
 	C.Style = ERenderStyle.STY_Translucent;//STY_Normal
 
 	//Color
-    RColor = 0;
-    GColor = 0;
-    BColor = 255;
+    RColor = 53;
+    GColor = 242;
+    BColor = 110;
 
 	fadetimeR = (Level.TimeSeconds - SHitText.LastHit) * (RColor / 5);
 	fadetimeG = (Level.TimeSeconds - SHitText.LastHit) * (GColor / 5);
@@ -84,7 +85,8 @@ simulated function HandleSHit(Canvas C)
 	C.DrawColor.G = GColor - fadetimeG;
 	C.DrawColor.B = BColor - fadetimeB;
 
-	C.DrawText(SHitText.Text);
+	S = "+"$string(SHitText.Text);
+	C.DrawText(S);
 }
 
 simulated event PostRender( canvas Canvas )

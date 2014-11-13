@@ -1,0 +1,30 @@
+class XMk5Fire extends KFHighROFFire;
+
+defaultproperties
+{
+     FireEndSoundRef="XMk5_A.oa_fire_m"
+     FireEndStereoSoundRef="XMk5_A.oa_fire_s"
+     AmbientFireSoundRef="XMk5_A.oa_fireloop_s"
+     RecoilRate=0.060000
+     maxVerticalRecoilAngle=75
+     maxHorizontalRecoilAngle=55
+     RecoilVelocityScale=0.000000
+     ShellEjectClass=Class'KFMod.ShellEjectKriss'
+     ShellEjectBoneName="Bolt"
+     NoAmmoSoundRef="KF_MP7Snd.MP7_DryFire"
+     DamageType=Class'BMTCustomMut.DamTypeMedicProgress'
+     DamageMin=45
+     DamageMax=50
+     Momentum=12500.000000
+     FireRate=0.100000
+     AmmoClass=Class'BMTCustomMut.XMk5Ammo'
+     ShakeRotMag=(X=50.000000,Y=50.000000,Z=350.000000)
+     ShakeRotRate=(X=5000.000000,Y=5000.000000,Z=5000.000000)
+     ShakeRotTime=0.750000
+     ShakeOffsetMag=(X=6.000000,Y=3.000000,Z=7.500000)
+     ShakeOffsetRate=(X=1000.000000,Y=1000.000000,Z=1000.000000)
+     ShakeOffsetTime=1.250000
+     FlashEmitterClass=Class'ROEffects.MuzzleFlash1stMP'
+     Spread=0.010500
+     SpreadStyle=SS_Random
+}

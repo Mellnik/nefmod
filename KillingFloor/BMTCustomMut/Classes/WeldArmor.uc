@@ -3,7 +3,7 @@ class WeldArmor extends Mutator;
 function PreBeginPlay()
 {
     // Add all needed packages.
-    AddToPackageMap("WeldArmor");
+    //AddToPackageMap("WeldArmor");
 }
 
 /*function ModifyPlayer(Pawn Player)

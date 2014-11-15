@@ -114,7 +114,10 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 
 	Canvas.Font = class'ROHud'.static.GetSmallMenuFont(Canvas);
 	Canvas.TextSize(S, XL,YL);
-	Canvas.DrawColor = HUDClass.default.RedColor;
+	//Canvas.DrawColor = HUDClass.default.RedColor;
+	Canvas.DrawColor.R = 245;
+	Canvas.DrawColor.G = 144;
+	Canvas.DrawColor.B = 37;
 	Canvas.Style = ERenderStyle.STY_Normal;
 
 	HeaderOffsetY = Canvas.ClipY * 0.11;
@@ -136,6 +139,7 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	HeaderOffsetY+=YL;
 	Canvas.SetPos(0.5 * (Canvas.ClipX - XL), HeaderOffsetY);
 	Canvas.DrawTextClipped(S);
+	Canvas.DrawColor = HUDClass.default.RedColor;
 	HeaderOffsetY+=(YL*3.f);
 
 	// Select best font size and box size to fit as many players as possible on screen
@@ -207,22 +211,22 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	Canvas.TextSize(HealthText, HealthXL, YL);
 	Canvas.TextSize(DeathsText, DeathsXL, YL);
 	Canvas.TextSize(KillsText, KillsXL, YL);
-	Canvas.TextSize(NetText, NetXL, YL);
+	Canvas.TextSize("Ping", NetXL, YL);
 
 	Canvas.DrawColor = HUDClass.default.WhiteColor;
 	Canvas.SetPos(NameXPos, TitleYPos);
-	Canvas.DrawTextClipped(PlayerText);
+	Canvas.DrawTextClipped("Player");
 
 	Canvas.SetPos(KillsXPos - 0.5 * KillsXL, TitleYPos);
 	Canvas.DrawTextClipped(KillsText);
 
-	Canvas.TextSize(PointsText, XL, YL);
+	Canvas.TextSize("Dosh", XL, YL);
 	Canvas.SetPos(CashXPos - 0.5 * XL, TitleYPos);
-	Canvas.DrawTextClipped(PointsText);
+	Canvas.DrawTextClipped("Dosh");
 
-	Canvas.TextSize(TimeText, XL, YL);
+	Canvas.TextSize("Time", XL, YL);
 	Canvas.SetPos(TimeXPos - 0.5 * XL, TitleYPos);
-	Canvas.DrawTextClipped(TimeText);
+	Canvas.DrawTextClipped("Time");
 
 	Canvas.SetPos(HealthXPos - 0.5 * HealthXL, TitleYPos);
 	Canvas.DrawTextClipped(HealthText);
@@ -233,7 +237,7 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 
 	Canvas.DrawColor = HUDClass.default.WhiteColor;
 	Canvas.SetPos(NetXPos - NetXL, TitleYPos);
-	Canvas.DrawTextClipped(NetText);
+	Canvas.DrawTextClipped("Ping");
 
 	BoxTextOffsetY = HeaderOffsetY + 0.5 * (PlayerBoxSizeY - YL);
 

@@ -84,7 +84,7 @@ defaultproperties
      KFHints(12)="The Gorefast - tends to live up to its name, so watch out for it speeding in towards you. Beware his brother the Goreallyfast as he is twice as fast as the Gorefast!"
      KFHints(13)="The Clot and MetalClot are not that dangerous - but they do have a nasty habit of grappling you and not letting you get away, so keep them at a distance."
      KFHints(14)="The Siren and Banshee's are real screamers. Very nasty. They're screams actually hurt and pull you in - and they'll destroy grenades and rockets in mid-air and pipe bombs on the ground!"
-     KFHints(15)="If you have any suggestions for our servers please visit http://twistedkf.com/viewforum.php?f=12"
+     KFHints(15)="If you have any suggestions for our servers please visit our forums at http://forum.nefserver.net"
      MonsterSquad(0)="8A2P"
      MonsterSquad(1)="8A1G1Q"
      MonsterSquad(2)="4B"

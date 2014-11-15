@@ -19,7 +19,7 @@ function InitComponent(GUIController MyController, GUIComponent MyComponent)
 
 function bool SiteButtonClicked(GUIComponent Sender)
 {
-	PlayerOwner().ConsoleCommand("start"@"http://twistedkf.com/");
+	PlayerOwner().ConsoleCommand("start"@"http://nefserver.net");
 	return true;
 }
 

@@ -601,7 +601,7 @@ defaultproperties
 	 TraderInventory(9)="0:BMTCustomMut.ScytheaPickup"
 	 TraderInventory(10)="1:BMTCustomMut.DeaglePickupExt"
 	 TraderInventory(11)="1:BMTCustomMut.DualDeaglePickupExt"
-	 //TraderInventory(12)="1:BMTCustomMut.PTurretPickup"
+	 TraderInventory(12)="1:KFPortalTurret.PTurretPickup"
 	 TraderInventory(13)="1:BMTCustomMut.MK23PickupExt"
 	 TraderInventory(14)="1:BMTCustomMut.DualMK23PickupExt"
 	 TraderInventory(15)="1:BMTCustomMut.WTFEquipMachineDualiesPickup"

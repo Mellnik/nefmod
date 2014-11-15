@@ -112,7 +112,7 @@ defaultproperties
      MonsterSquad(24)="2I"
      MonsterSquad(25)="4A2C2I"
      MonsterSquad(26)="4I"
-     DefaultPlayerName="BMT: Server Guest"
+     DefaultPlayerName="NEF: Server Guest"
      GameName="BMT-KF"
      Description="A modified KillingFloor GameType, Contains Custom Perks, Custom Zeds, Custom Weapons, and WTF Mobs. -Created By LasVegasPunk"
 	 TimeBetweenWavesBeginner=70

@@ -21,157 +21,157 @@ static function int GetPerkProgressInt( ClientPerkRepLink StatOther, out int Fin
 		FinalInt = 1;
 		break;
 	case 1:
-		FinalInt = 1000000;
+		FinalInt = 100000;
 		break;
 	case 2:
-		FinalInt = 2000000;
+		FinalInt = 200000;
 		break;
 	case 3:
-		FinalInt = 3000000;
+		FinalInt = 300000;
 		break;
 	case 4:
-		FinalInt = 4000000;
+		FinalInt = 400000;
 		break;
 	case 5:
-		FinalInt = 5000000;
+		FinalInt = 500000;
 		break;
 	case 6:
-		FinalInt = 6000000;
+		FinalInt = 600000;
 		break;
 	case 7:
-		FinalInt = 7000000;
+		FinalInt = 700000;
 		break;
 	case 8:
-		FinalInt = 8000000;
+		FinalInt = 800000;
 		break;
 	case 9:
-		FinalInt = 9000000;
+		FinalInt = 900000;
 		break;
 	case 10:
-		FinalInt = 10000000;
+		FinalInt = 1000000;
 		break;
 	case 11:
-		FinalInt = 11000000;
+		FinalInt = 1100000;
 		break;
 	case 12:
-		FinalInt = 12000000;
+		FinalInt = 1200000;
 		break;
 	case 13:
-		FinalInt = 13000000;
+		FinalInt = 1300000;
 		break;
 	case 14:
-		FinalInt = 14000000;
+		FinalInt = 1400000;
 		break;
 	case 15:
-		FinalInt = 15000000;
+		FinalInt = 1500000;
 		break;
 	case 16:
-		FinalInt = 16000000;
+		FinalInt = 1600000;
 		break;
 	case 17:
-		FinalInt = 17000000;
+		FinalInt = 1700000;
 		break;
 	case 18:
-		FinalInt = 18000000;
+		FinalInt = 1800000;
 		break;
 	case 19:
-		FinalInt = 19000000;
+		FinalInt = 1900000;
 		break;
 	case 20:
-		FinalInt = 20000000;
+		FinalInt = 2000000;
 		break;
 	case 21:
-		FinalInt = 21000000;
+		FinalInt = 2100000;
 		break;
 	case 22:
-		FinalInt = 22000000;
+		FinalInt = 2200000;
 		break;
 	case 23:
-		FinalInt = 23000000;
+		FinalInt = 2300000;
 		break;
 	case 24:
-		FinalInt = 24000000;
+		FinalInt = 2400000;
 		break;
 	case 25:
-		FinalInt = 25000000;
+		FinalInt = 2500000;
 		break;
 	case 26:
-		FinalInt = 26000000;
+		FinalInt = 2600000;
 		break;
 	case 27:
-		FinalInt = 27000000;
+		FinalInt = 2700000;
 		break;
 	case 28:
-		FinalInt = 28000000;
+		FinalInt = 2800000;
 		break;
 	case 29:
-		FinalInt = 29000000;
+		FinalInt = 2900000;
 		break;
 	case 30:
-		FinalInt = 30000000;
+		FinalInt = 3000000;
 		break;
 	case 31:
-		FinalInt = 31000000;
+		FinalInt = 3100000;
 		break;
 	case 32:
-		FinalInt = 32000000;
+		FinalInt = 3200000;
 		break;
 	case 33:
-		FinalInt = 33000000;
+		FinalInt = 3300000;
 		break;
 	case 34:
-		FinalInt = 34000000;
+		FinalInt = 3400000;
 		break;
 	case 35:
-		FinalInt = 35000000;
+		FinalInt = 3500000;
 		break;
 	case 36:
-		FinalInt = 36000000;
+		FinalInt = 3600000;
 		break;
 	case 37:
-		FinalInt = 37000000;
+		FinalInt = 3700000;
 		break;
 	case 38:
-		FinalInt = 38000000;
+		FinalInt = 3800000;
 		break;
 	case 39:
-		FinalInt = 39000000;
+		FinalInt = 3900000;
 		break;
 	case 40:
-		FinalInt = 40000000;
+		FinalInt = 4000000;
 		break;
 	case 41:
-		FinalInt = 41000000;
+		FinalInt = 4100000;
 		break;
 	case 42:
-		FinalInt = 42000000;
+		FinalInt = 4200000;
 		break;
 	case 43:
-		FinalInt = 43000000;
+		FinalInt = 4300000;
 		break;
 	case 44:
-		FinalInt = 44000000;
+		FinalInt = 4400000;
 		break;
 	case 45:
-		FinalInt = 45000000;
+		FinalInt = 4500000;
 		break;
 	case 46:
-		FinalInt = 46000000;
+		FinalInt = 4600000;
 		break;
 	case 47:
-		FinalInt = 47000000;
+		FinalInt = 4700000;
 		break;
 	case 48:
-		FinalInt = 48000000;
+		FinalInt = 4800000;
 		break;
 	case 49:
-		FinalInt = 49000000;
+		FinalInt = 4900000;
 		break;
 	case 50:
-		FinalInt = 50000000;
+		FinalInt = 5000000;
 		break;
 	default:
-		FinalInt = 50000000+GetDoubleScaling(CurLevel,0);
+		FinalInt = 5000000+GetDoubleScaling(CurLevel,0);
 	}
 	return Min(StatOther.GetCustomValueInt(Class'MedicProgress'),FinalInt);
 }

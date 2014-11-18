@@ -16,136 +16,136 @@ static function int GetPerkProgressInt( ClientPerkRepLink StatOther, out int Fin
 		FinalInt = 1;
 		break;
 	case 1:
-		FinalInt = 350000;
+		FinalInt = 10000;
 		break;
 	case 2:
-		FinalInt = 700000;
+		FinalInt = 50000;
 		break;
 	case 3:
-		FinalInt = 1050000;
+		FinalInt = 150000;
 		break;
 	case 4:
-		FinalInt = 1400000;
+		FinalInt = 280000;
 		break;
 	case 5:
-		FinalInt = 1750000;
+		FinalInt = 400000;
 		break;
 	case 6:
-		FinalInt = 2100000;
+		FinalInt = 655000;
 		break;
 	case 7:
-		FinalInt = 2450000;
+		FinalInt = 950000;
 		break;
 	case 8:
-		FinalInt = 2800000;
+		FinalInt = 1450000;
 		break;
 	case 9:
-		FinalInt = 3150000;
+		FinalInt = 1780000;
 		break;
 	case 10:
-		FinalInt = 3500000;
+		FinalInt = 2200000;
 		break;
 	case 11:
-		FinalInt = 4650000;
+		FinalInt = 2850000;
 		break;
 	case 12:
-		FinalInt = 5800000;
+		FinalInt = 3800000;
 		break;
 	case 13:
-		FinalInt = 6950000;
+		FinalInt = 4950000;
 		break;
 	case 14:
-		FinalInt = 8100000;
+		FinalInt = 5560000;
 		break;
 	case 15:
-		FinalInt = 9250000;
+		FinalInt = 6950000;
 		break;
 	case 16:
-		FinalInt = 10400000;
+		FinalInt = 8400000;
 		break;
 	case 17:
-		FinalInt = 11550000;
+		FinalInt = 10000000;
 		break;
 	case 18:
-		FinalInt = 12700000;
+		FinalInt = 11900000;
 		break;
 	case 19:
-		FinalInt = 13850000;
+		FinalInt = 13050000;
 		break;
 	case 20:
 		FinalInt = 15000000;
 		break;
 	case 21:
-		FinalInt = 17000000;
+		FinalInt = 16500000;
 		break;
 	case 22:
-		FinalInt = 19000000;
+		FinalInt = 18000000;
 		break;
 	case 23:
-		FinalInt = 21000000;
+		FinalInt = 19500000;
 		break;
 	case 24:
-		FinalInt = 23000000;
+		FinalInt = 21000000;
 		break;
 	case 25:
-		FinalInt = 25000000;
+		FinalInt = 22500000;
 		break;
 	case 26:
-		FinalInt = 27000000;
+		FinalInt = 24100000;
 		break;
 	case 27:
-		FinalInt = 29000000;
+		FinalInt = 25600000;
 		break;
 	case 28:
-		FinalInt = 31000000;
+		FinalInt = 28000000;
 		break;
 	case 29:
-		FinalInt = 33000000;
+		FinalInt = 30000000;
 		break;
 	case 30:
-		FinalInt = 35000000;
+		FinalInt = 32000000;
 		break;
 	case 31:
-		FinalInt = 38000000;
+		FinalInt = 34000000;
 		break;
 	case 32:
-		FinalInt = 41000000;
+		FinalInt = 36400000;
 		break;
 	case 33:
-		FinalInt = 44000000;
+		FinalInt = 38200000;
 		break;
 	case 34:
-		FinalInt = 47000000;
+		FinalInt = 41000000;
 		break;
 	case 35:
-		FinalInt = 50000000;
+		FinalInt = 43800000;
 		break;
 	case 36:
-		FinalInt = 53000000;
+		FinalInt = 46200000;
 		break;
 	case 37:
-		FinalInt = 56000000;
+		FinalInt = 49300000;
 		break;
 	case 38:
-		FinalInt = 59000000;
+		FinalInt = 53000000;
 		break;
 	case 39:
-		FinalInt = 62000000;
+		FinalInt = 56500000;
 		break;
 	case 40:
-		FinalInt = 65000000;
+		FinalInt = 62000000;
 		break;
 	case 41:
-		FinalInt = 68500000;
+		FinalInt = 66000000;
 		break;
 	case 42:
-		FinalInt = 72000000;
+		FinalInt = 70500000;
 		break;
 	case 43:
-		FinalInt = 75500000;
+		FinalInt = 74200000;
 		break;
 	case 44:
-		FinalInt = 79000000;
+		FinalInt = 78800000;
 		break;
 	case 45:
 		FinalInt = 82500000;

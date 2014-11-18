@@ -34,19 +34,34 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 
 	Canvas.Font = class'ROHud'.static.GetSmallMenuFont(Canvas);
 	Canvas.TextSize(S, XL,YL);
-	Canvas.DrawColor = HUDClass.default.RedColor;
+	//Canvas.DrawColor = HUDClass.default.RedColor;
+	Canvas.DrawColor.R = 245;
+	Canvas.DrawColor.G = 144;
+	Canvas.DrawColor.B = 37;
 	Canvas.Style = ERenderStyle.STY_Normal;
 
 	HeaderOffsetY = Canvas.ClipY * 0.11;
 	Canvas.SetPos(0.5 * (Canvas.ClipX - XL), HeaderOffsetY);
 	Canvas.DrawTextClipped(S);
 
+	Canvas.DrawColor.R = 53;
+	Canvas.DrawColor.G = 242;
+	Canvas.DrawColor.B = 110;
+	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 20.0, (HeaderOffsetY - (YL + 25.0)));
+	Canvas.DrawTextClipped("www.nefserver.net - New Evolution Freeoram (nefmod)");
+	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 50.0, (HeaderOffsetY - (YL + 17.0)));
+	Canvas.DrawTextClipped("NEF Custom Server | Hard/HoE/Vehicles");
+	Canvas.DrawColor.R = 245;
+	Canvas.DrawColor.G = 144;
+	Canvas.DrawColor.B = 37;
+	
 	// Second title line
 	S = PlayerCountText@PlayerCount@SpectatorCountText@NetXPos@AliveCountText@HeadFoot;
 	Canvas.TextSize(S, XL,YL);
 	HeaderOffsetY+=YL;
 	Canvas.SetPos(0.5 * (Canvas.ClipX - XL), HeaderOffsetY);
 	Canvas.DrawTextClipped(S);
+	Canvas.DrawColor = HUDClass.default.RedColor;
 	HeaderOffsetY+=(YL*3.f);
 
 	// Select best font size and box size to fit as many players as possible on screen
@@ -120,7 +135,7 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	Canvas.TextSize(HealthTextMM, HealthXL, YL);
 	Canvas.TextSize(DeathsText, DeathsXL, YL);
 	Canvas.TextSize(KillsText, KillsXL, YL);
-	Canvas.TextSize(NetText, NetXL, YL);
+	Canvas.TextSize("Ping", NetXL, YL);
 	Canvas.TextSize(StatusText, StatusXL, YL);
 	Canvas.TextSize(ArmorText, ArmorXL, YL);
 	Canvas.TextSize(LvlText, LvlXL, YL);
@@ -131,7 +146,7 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	Canvas.DrawTextClipped(LvlText);
 	
 	Canvas.SetPos(NameXPos, TitleYPos);
-	Canvas.DrawTextClipped(PlayerText);
+	Canvas.DrawTextClipped("Player");
 
 	Canvas.SetPos(KillsXPos - 0.5 * KillsXL, TitleYPos);
 	Canvas.DrawTextClipped(KillsText);
@@ -149,9 +164,9 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	Canvas.SetPos(CashXPos - 0.5 * XL, TitleYPos);
 	Canvas.DrawTextClipped(PointsText);
 
-	Canvas.TextSize(TimeText, XL, YL);
+	Canvas.TextSize("Time:", XL, YL);
 	Canvas.SetPos(TimeXPos - 0.5 * XL, TitleYPos);
-	Canvas.DrawTextClipped(TimeText);
+	Canvas.DrawTextClipped("Time:");
 	
 
 	Canvas.Style = ERenderStyle.STY_Normal;
@@ -160,7 +175,7 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 
 	Canvas.DrawColor = HUDClass.default.WhiteColor;
 	Canvas.SetPos(NetXPos - NetXL, TitleYPos);
-	Canvas.DrawTextClipped(NetText);
+	Canvas.DrawTextClipped("Ping");
 
 	BoxTextOffsetY = HeaderOffsetY + 0.5 * (PlayerBoxSizeY - YL);
 

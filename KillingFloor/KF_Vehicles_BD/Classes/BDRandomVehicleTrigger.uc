@@ -144,7 +144,7 @@ if ( shouldCreate() )
 	  {
                VehicleCount++;
                MaxVehicleCount--;
-               BDGameType(Level.Game).NotifyAddCar();
+               BMTGameType(Level.Game).NotifyAddCar();
 //             CreatedVehicle.Event = Tag;
                CreatedVehicle.ParentFactory = self;
 //             CreatedVehicle.SetTeamNum(TeamNum);
@@ -167,7 +167,7 @@ event VehicleDestroyed(Vehicle V)
 		OnKilledEvent = RandomOKEvents[ Rand(RandomOKEvents.length ) ].MyOKEvents;
 
 	  	    MaxVehicleCount++;
-                    BDGameType(Level.Game).NotifyRemoveCar();
+                    BMTGameType(Level.Game).NotifyRemoveCar();
 		    TriggerEvent( OnKilledEvent,self, None );
 
 	
@@ -247,7 +247,7 @@ function bool PlayerCanSeePoint(vector TestLocation)
 
 function bool shouldCreate() {
 
-   if (BDGameType(Level.Game).TooManyCars(none)){
+   if (BMTGameType(Level.Game).TooManyCars(none)){
 		//log("Too many cars");
        return False;
 	}

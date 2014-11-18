@@ -12,33 +12,28 @@ static function FillPlayInfo(PlayInfo PlayInfo)
 
 function PostNetBeginPlay()
 {
-	if(BDgametype(level.game) == none)
+	if(BMTGameType(level.game) == none)
 	{		
-		level.servertravel("?game=KF_Vehicles_BD.BDgametype", true);
+		level.servertravel("?game=BMTCustomMut.BMTGameType", true);
 	}
+}
+
+function bool CheckReplacement(Actor Other, out byte bSuperRelevant) {
+    if (Other.IsA('KFHumanPawn'))
+        KFHumanPawn(Other).RequiredEquipment[4] = "KF_Vehicles_BD.BDwelder";
+
+    return true;
 }
 
 function postBeginPlay()
 {
-/*	local string currentmap;
-
-	if(level.game == None)
-		return;
-	
-	if(BDgametype(level.game) == none)
-	{
-		currentmap = GetURLMap(false);
-
-		level.servertravel("?game=KF_Vehicles_BD.BDgametype", true);
-	}*/
-	
 	if ( Role != ROLE_Authority )
         return;
 	
-	if(level.game != none && BDgametype(level.game) != none)
+	if(level.game != none && BMTGameType(level.game) != none)
 	{
-		BDgametype(level.game).MaxCarLimit = MaxCarLimit;
-		BDgametype(level.game).MinCarLimit = MinCarLimit;
+		BMTGameType(level.game).MaxCarLimit = MaxCarLimit;
+		BMTGameType(level.game).MinCarLimit = MinCarLimit;
 	}
 }
 

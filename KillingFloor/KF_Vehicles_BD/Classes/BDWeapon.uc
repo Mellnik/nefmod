@@ -1,7 +1,9 @@
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
-class BDWeapon extends ROvehicleweapon;
+class BDWeapon extends ROvehicleweapon
+   ;
+
 
 var() name  fireanim;
 
@@ -27,6 +29,8 @@ simulated function PostBeginPlay()
 	}
 
 }
+
+
 
 simulated function DisplayDebug(Canvas Canvas, out float YL, out float YPos)
 {

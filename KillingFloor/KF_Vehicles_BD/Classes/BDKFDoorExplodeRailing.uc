@@ -1,6 +1,6 @@
 class BDKFDoorExplodeRailing extends KFDoorExplode;
 
-#exec OBJ LOAD FILE=KFWeaponSound.uax
+             #exec OBJ LOAD FILE=KFWeaponSound.uax
 
 var() array<Sound> ImpactSounds;
 

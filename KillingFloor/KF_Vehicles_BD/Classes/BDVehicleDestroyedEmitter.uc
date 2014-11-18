@@ -10,7 +10,7 @@
 
 class BDVehicleDestroyedEmitter extends Emitter;
 
-#exec OBJ LOAD FILE="..\KF_Vehicles_BD\StaticMeshes\BDVehicles_S.usx"
+#exec OBJ LOAD FILE="..\StaticMeshes\BDVehicles_S.usx"
 
 defaultproperties
 {

@@ -3,10 +3,10 @@
 //-----------------------------------------------------------
 class MiniW extends MiniR;
 
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Animations\BDVehicles.ukx
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Textures\BDVehicle_T.utx
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Sounds\BDVehicles_A.uax
-#exec obj LOAD FILE=..\KF_Vehicles_BD\StaticMeshes\BDVehicles_S.usx
+#exec OBJ LOAD FILE=..\Animations\BDVehicles.ukx
+#exec OBJ LOAD FILE=..\Textures\BDVehicle_T.utx
+#exec OBJ LOAD FILE=..\sounds\BDVehicles_A.uax
+#exec obj LOAD FILE=..\StaticMeshes\BDVehicles_S.usx
 
 defaultproperties
 {

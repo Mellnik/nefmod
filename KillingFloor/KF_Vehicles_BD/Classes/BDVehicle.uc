@@ -7,6 +7,8 @@ function DamageEngine(int Damage, Pawn instigatedBy, Vector Hitlocation, Vector 
 
 }
 
+
+
 function ServerChangeViewPoint(bool bForward)
 {}
 
@@ -19,6 +21,7 @@ simulated state EnteringVehicle
 simulated state LeavingVehicle
 {}
 
+
 simulated function NextViewPoint()
 {}
 
@@ -29,6 +32,7 @@ simulated function vector GetCameraLocationStart()
 {
 	return Location;
 }
+
 
 simulated function SpecialCalcBehindView(PlayerController PC, out actor ViewActor, out vector CameraLocation, out rotator CameraRotation )
 {
@@ -170,6 +174,9 @@ simulated event SetWheelsScale(float NewScale)
 }
 
 //KF Vehicle test
+
+
+
 
 // Called from the PlayerController when player wants to get out.
 event bool KDriverLeave( bool bForceLeave )
@@ -393,6 +400,7 @@ simulated function PrevWeapon()
 simulated function DetachDriver(Pawn P) {}
 
 
+
 simulated function int LimitYaw(int yaw)
 {
 
@@ -575,6 +583,8 @@ event CheckReset()
 
 	Destroy();
 }
+
+
 
 simulated function DrawHUD(Canvas Canvas)
 {

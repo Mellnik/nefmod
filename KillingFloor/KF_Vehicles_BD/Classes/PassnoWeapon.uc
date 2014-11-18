@@ -1,6 +1,6 @@
 class PassnoWeapon extends BDWeapon;
 
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Animations\BDVehicles.ukx
+#exec OBJ LOAD FILE=..\Animations\BDVehicles.ukx
 
 defaultproperties
 {

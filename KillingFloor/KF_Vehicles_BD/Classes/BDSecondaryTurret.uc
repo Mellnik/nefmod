@@ -1,7 +1,7 @@
 class BDSecondaryTurret extends PassengerChainGun;
 
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Animations\BDVehiclesB.ukx
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Textures\BDVehicle_T.utx
+#exec OBJ LOAD FILE=..\Animations\BDVehiclesB.ukx
+#exec OBJ LOAD FILE=..\Textures\BDVehicle_T.utx
 
 defaultproperties
 {

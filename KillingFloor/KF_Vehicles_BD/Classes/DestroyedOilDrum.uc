@@ -1,7 +1,7 @@
 class DestroyedOilDrum extends StaticMeshActor
     placeable;
 
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\StaticMeshes\BDVehicle_SB.usx
+             #exec OBJ LOAD FILE=BDVehicle_SB.usx
 
 defaultproperties
 {

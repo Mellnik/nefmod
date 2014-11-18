@@ -214,6 +214,12 @@ simulated function ChangeStuff(bool bDriverOnRight, bool bRightPassenger, float 
 }
 
 
+
+
+
+
+
+
 simulated event SVehicleUpdateParams()
 {
 	local int i;
@@ -589,6 +595,7 @@ function bool EncroachingOn(Actor Other)
 	}
 }
 
+
 /*
 
 // This will get called if we couldn't move a pawn out of the way.
@@ -607,6 +614,8 @@ function bool EncroachingOn(Actor Other)
 	}
 }
 */
+
+
 
 
 function TakeDamage( int Damage, Pawn instigatedBy, Vector hitlocation,
@@ -912,15 +921,10 @@ simulated function Tick(float dt)
 		if (Fuel > 0.0)          //do we have gas?
 		{
 			if(level.netmode != NM_DedicatedServer)
-				
-						Fuel-=0.03;
-				
-						else
-				
-						Fuel-=0.3;
-				
+				Fuel-=0.03;
+			else
+				Fuel-=0.3;
 		}
- 
 		else
         {
             //log("==========> Sending Out of gas message!!!");
@@ -928,13 +932,11 @@ simulated function Tick(float dt)
             if (!bOutOfGas)
             {
                 PlaySound(ShutDownSound, SLOT_None, 1.0);
-            PlaySound(vehicleout, SLOT_NONE, 3.0);
+				PlaySound(vehicleout, SLOT_NONE, 3.0);
                 bOutOfGas = true;
             }
             Throttle	= 0;
             PlayerController(Controller).ReceiveLocalizedMessage(class'BDMessageGas', 2);
-
-            
 	    }
    }
 }
@@ -972,7 +974,7 @@ defaultproperties
      MPHPointer=TexRotator'BDVehicle_T.HUD.SpeedMeterPointer'
      MaxFuelPointerRotation=-23000
      MaxMPHPointerRotation=-44000
-     healthToGive=0.000000
+     healthToGive=1.000000
      bHasAltFire=True
      ImpactDamageSounds(0)=Sound'ProjectileSounds.Bullets.PTRD_deflect01'
      ImpactDamageSounds(1)=Sound'ProjectileSounds.Bullets.PTRD_deflect04'

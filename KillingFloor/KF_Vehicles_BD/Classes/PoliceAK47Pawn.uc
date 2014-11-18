@@ -57,7 +57,7 @@ simulated exec function ToggleIronSights()
 
 defaultproperties
 {
-     GunClass=Class'KF_Vehicles_BD.Passenger_Police_AK47c'
+     GunClass=Class'KF_Vehicles_BD.Passenger_Police_AK47'
      CameraBone="Camera"
      bDrawDriverInTP=False
      DrivePos=(Y=80.000000,Z=90.000000)

@@ -4,9 +4,10 @@
 class Merlin extends ROChopperCraft
     placeable;
 
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Animations\BDVehiclesB.ukx
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Sounds\BDVehicles_A.uax
-#exec OBJ LOAD FILE=..\Textures\kf_generic_t.utx
+#exec OBJ LOAD FILE=..\Animations\BDVehiclesB.ukx
+#exec obj load file=..\Sounds\BDVehicles_A.uax
+#exec obj load file=..\Textures\kf_generic_t.utx
+
 
 var Actor LastAttackedTarget;
 var() sound DropMineSound;
@@ -111,7 +112,7 @@ simulated function PostNetBeginPlay()
     J.Pitch=0;
     R.Yaw=0;
 
-bteamlocked=false;
+	bteamlocked=false;
 }
 
 
@@ -570,24 +571,24 @@ defaultproperties
      CollisionRadius=150.000000
      CollisionHeight=70.000000
      Begin Object Class=KarmaParamsRBFull Name=KParams0
-	 KInertiaTensor(0)=1.000000
-	 KInertiaTensor(3)=3.000000
-	 KInertiaTensor(5)=3.500000
-	 KCOMOffset=(X=-0.250000)
-	 KLinearDamping=0.000000
-	 KAngularDamping=0.000000
-	 KStartEnabled=True
-	 bKNonSphericalInertia=True
-	 KActorGravScale=1.000000
-	 bHighDetailOnly=False
-	 bClientOnly=False
-	 bKDoubleTickRate=True
-	 bKStayUpright=True
-	 bKAllowRotate=True
-	 bDestroyOnWorldPenetrate=True
-	 bDoSafetime=True
-	 KFriction=0.500000
-	 KImpactThreshold=300.000000
+         KInertiaTensor(0)=1.000000
+         KInertiaTensor(3)=3.000000
+         KInertiaTensor(5)=3.500000
+         KCOMOffset=(X=-0.250000)
+         KLinearDamping=0.000000
+         KAngularDamping=0.000000
+         KStartEnabled=True
+         bKNonSphericalInertia=True
+         KActorGravScale=1.000000
+         bHighDetailOnly=False
+         bClientOnly=False
+         bKDoubleTickRate=True
+         bKStayUpright=True
+         bKAllowRotate=True
+         bDestroyOnWorldPenetrate=True
+         bDoSafetime=True
+         KFriction=0.500000
+         KImpactThreshold=300.000000
      End Object
      KParams=KarmaParamsRBFull'KF_Vehicles_BD.Merlin.KParams0'	
 }

@@ -11,31 +11,7 @@ struct OKEvents
 
 var     array<OKEvents> RandomOKEvents;   
  
-function PlayerDamaged(int Damage, PlayerController PC)
-{
-	if(Damage == 0)
-	{
-		return;
-	}
-	KFPCServ(PC).OnPlayerDamaged(Damage);
-}
 
-function int ReduceDamage(int Damage, Pawn injured, Pawn instigatedBy, Vector HitLocation, out Vector Momentum, class<DamageType> DamageType) 
-{
-    local int realDamage;
-	
-	if (instigatedBy==None) return Damage;
-        Damage = super.ReduceDamage(Damage, injured, instigatedBy, HitLocation, Momentum, DamageType); 
-		
-    realDamage=Damage;
-	if(Damage>injured.Health) 
-		realDamage=injured.Health;	
-		
-	if(PlayerController(instigatedBy.Controller) != none) 
-        PlayerDamaged(realDamage, PlayerController(instigatedBy.Controller)); 
-        
-    return Damage;
-}
 
 /*
 event PreBeginPlay()
@@ -110,7 +86,7 @@ event Tick(float DeltaTime)
 	
 function AddDefaultInventory( pawn PlayerPawn )
 {
-    PlayerPawn.giveweapon("NEFCustomKnife.NEFKnife");
+    PlayerPawn.giveweapon("KFMod.knife");
     PlayerPawn.giveweapon("KFMod.dualies");
     PlayerPawn.giveweapon("KFMod.syringe");
     PlayerPawn.giveweapon("KF_Vehicles_BD.BDwelder");

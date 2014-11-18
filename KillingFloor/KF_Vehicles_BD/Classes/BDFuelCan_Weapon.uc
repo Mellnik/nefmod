@@ -10,7 +10,7 @@ class BDFuelCan_Weapon extends KFWeapon
     config(user);
 
 #exec OBJ LOAD FILE=KillingFloorWeapons.utx
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Textures\BDVehicle_T.utx
+#exec OBJ LOAD FILE=BDVehicle_T.utx
 //#exec OBJ LOAD FILE=BDVehicles.uax
 
 var   int       CurrentMode;

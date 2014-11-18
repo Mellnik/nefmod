@@ -5,10 +5,10 @@ class ForkLift extends BDWheeledvehicle;
 
 Var sound        forks;
 
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Sounds\BDVehicles_A.uax
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\StaticMeshes\BDVehicle_SB.usx
+#exec OBJ LOAD FILE=..\Animations\BDVehiclesB.ukx
 #exec OBJ LOAD FILE=..\Textures\Foundry_T.UTX
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Animations\BDVehiclesB.ukx
+#exec OBJ LOAD FILE=..\sounds\BDVehicles_A.uax
+#exec obj LOAD FILE=..\StaticMeshes\BDVehicles_S.usx
 
 //-----------------------------------------------------------
 //  VehicleFire

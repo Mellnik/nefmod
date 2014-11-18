@@ -8,7 +8,7 @@
 //-----------------------------------------------------------
 class BDFuelCan_WeaponPickup extends KFWeaponPickup;
 
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Textures\BDVehicle_T.utx
+#exec OBJ LOAD FILE=BDVehicle_T.utx
 
 var int currentShell;
 var int fired;

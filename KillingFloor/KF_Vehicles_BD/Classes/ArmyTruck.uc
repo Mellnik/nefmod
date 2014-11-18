@@ -1,14 +1,16 @@
 //-----------------------------------------------------------
 //
 //-----------------------------------------------------------
-class ArmyTruck extends BDWheeledvehicle;
+class ArmyTruck extends BDwheeledvehicle;
 
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Animations\BDVehicles.ukx
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Textures\BDVehicle_T.utx
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\StaticMeshes\BDVehicles_S.usx
-#exec OBJ LOAD FILE=..\KF_Vehicles_BD\Sounds\BDVehicles_A.uax
+
+#exec OBJ LOAD FILE=..\Animations\BDVehicles.ukx
+#exec OBJ LOAD FILE=..\Textures\BDVehicle_T.utx
+#exec obj LOAD FILE=..\StaticMeshes\BDVehicles_S.usx
+#exec obj load file=..\Sounds\BDVehicles_A.uax
 
 /*
+
 function TakeDamage(int Damage, Pawn instigatedBy, Vector hitlocation, Vector momentum, class<DamageType> damageType,optional int h)
 {
 	health-=damage;
@@ -154,8 +156,8 @@ defaultproperties
      ObjectiveGetOutDist=1500.000000
      FlagRotation=(Yaw=32768)
      GroundSpeed=500.000000
-     HealthMax=200.000000
-     Health=200
+     HealthMax=150.000000
+     Health=150
      Mesh=SkeletalMesh'BDVehicles.truckv1'
      DrawScale=0.900000
      Skins(0)=Combiner'KillingFloorTextures.VehichleShaders.armytruckhigh_cmb'
@@ -164,21 +166,22 @@ defaultproperties
      SoundVolume=180
      CollisionRadius=175.000000
      Begin Object Class=KarmaParamsRBFull Name=KParams0
-	 KInertiaTensor(0)=1.000000
-	 KInertiaTensor(3)=3.000000
-	 KInertiaTensor(5)=3.500000
-	 KCOMOffset=(X=-0.300000,Z=-0.500000)
-	 KLinearDamping=0.050000
-	 KAngularDamping=0.050000
-	 KStartEnabled=True
-	 bKNonSphericalInertia=True
-	 bHighDetailOnly=False
-	 bClientOnly=False
-	 bKDoubleTickRate=True
-	 bDestroyOnWorldPenetrate=True
-	 bDoSafetime=True
-	 KFriction=0.500000
-	 KImpactThreshold=500.000000
+         KInertiaTensor(0)=1.000000
+         KInertiaTensor(3)=3.000000
+         KInertiaTensor(5)=3.500000
+         KCOMOffset=(X=-0.300000,Z=-0.500000)
+         KLinearDamping=0.050000
+         KAngularDamping=0.050000
+         KStartEnabled=True
+         bKNonSphericalInertia=True
+         bHighDetailOnly=False
+         bClientOnly=False
+         bKDoubleTickRate=True
+         bDestroyOnWorldPenetrate=True
+         bDoSafetime=True
+         KFriction=0.500000
+         KImpactThreshold=500.000000
      End Object
      KParams=KarmaParamsRBFull'KF_Vehicles_BD.ArmyTruck.KParams0'
+
 }

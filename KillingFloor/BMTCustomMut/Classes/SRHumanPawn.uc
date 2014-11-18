@@ -33,14 +33,16 @@ function Timer()
 	
 	foreach Self.RadiusActors(class'KFHumanPawn', KFHP, 189600)
 	{
-		if(KFHP!=None && KFPlayerReplicationInfo(KFHP.PlayerReplicationInfo).ClientVeteranSkill.default.PerkIndex==51)
+		if(KFHP!=None && KFHP.PlayerReplicationInfo!=None && SRPlayerReplicationInfo(KFHP.PlayerReplicationInfo)!=None && KFPlayerReplicationInfo(KFHP.PlayerReplicationInfo).ClientVeteranSkill.default.PerkIndex==51)
 		{
 			SRPlayerReplicationInfo(PlayerReplicationInfo).buffed=1;
 			SetTimer(1.0,true);	
 			return;
 		}
 	}
-	SRPlayerReplicationInfo(PlayerReplicationInfo).buffed=0;
+	
+	if(PlayerReplicationInfo!=None && SRPlayerReplicationInfo(PlayerReplicationInfo)!=None)
+		SRPlayerReplicationInfo(PlayerReplicationInfo).buffed=0;
 	SetTimer(1.0,true);	
 }
 

@@ -10,6 +10,17 @@ var bool bUseDoomBoss, bSpawnedPatriarch; // Are we using a Doom Boss?
 var array<string>   DoomBossClasses;
 var string DoomBossClass; // class of doom boss
 
+var config int   MaxCarLimit;
+var	  int	NumCars;
+var config int   MinCarLimit;
+
+struct OKEvents
+{
+     var name  MyOKevents;
+};
+
+var     array<OKEvents> RandomOKEvents;   
+
 function bool AddBoss()
 {
 	if (EndGameBossClasses.length > 0)
@@ -17,6 +28,58 @@ function bool AddBoss()
 	
 	super.AddBoss();
 	bSpawnedPatriarch=true;
+}
+
+function NotifyAddCar(){
+   NumCars++;
+}
+
+
+function NotifyRemoveCar(){
+   NumCars--;
+}
+
+
+function bool TooManyCars(Controller CarToRemove){
+   local int CurrentInPlayLimit;
+
+	
+   
+     CurrentInPlayLimit = MaxCarLimit;
+
+	 //log("TooManyCars"@NumCars@CurrentInPlayLimit);
+
+   if (NumCars >= CurrentInPlayLimit){ return true; }
+   return false;
+}
+
+
+function bool NotEnoughCars(){
+   local int CurrentInPlayLimit;
+
+
+       CurrentInPlayLimit = MinCarLimit;
+	   
+	  //log("NotEnoughCars"@NumCars@CurrentInPlayLimit);
+
+
+   if (NumCars < CurrentInPlayLimit){ return true; }
+   return false;
+}
+
+
+
+event Tick(float DeltaTime)
+{
+
+	super.tick(deltatime);
+
+	If (NotEnoughCars())
+	{
+	 	if (  RandomOKEvents.length > 0 )
+		Event = RandomOKEvents[ Rand(RandomOKEvents.length ) ].MyOKEvents;
+		TriggerEvent( Event, self, None );
+	}
 }
 
 defaultproperties
@@ -126,4 +189,37 @@ defaultproperties
 	 ZEDTimeDuration=1.0
      ZedTimeSlomoScale=0.1
 	 bForceRespawn=True
+	 
+	 MaxCarLimit=6
+     MinCarLimit=3
+     RandomOKEvents(0)=(MyOKevents="OK0")
+     RandomOKEvents(1)=(MyOKevents="OK1")
+     RandomOKEvents(2)=(MyOKevents="OK2")
+     RandomOKEvents(3)=(MyOKevents="OK3")
+     RandomOKEvents(4)=(MyOKevents="OK4")
+     RandomOKEvents(5)=(MyOKevents="OK5")
+     RandomOKEvents(6)=(MyOKevents="OK6")
+     RandomOKEvents(7)=(MyOKevents="OK7")
+     RandomOKEvents(8)=(MyOKevents="OK8")
+     RandomOKEvents(9)=(MyOKevents="OK9")
+     RandomOKEvents(10)=(MyOKevents="OK10")
+     RandomOKEvents(11)=(MyOKevents="OK11")
+     RandomOKEvents(12)=(MyOKevents="OK12")
+     RandomOKEvents(13)=(MyOKevents="OK13")
+     RandomOKEvents(14)=(MyOKevents="OK14")
+     RandomOKEvents(15)=(MyOKevents="OK15")
+     RandomOKEvents(16)=(MyOKevents="OK16")
+     RandomOKEvents(17)=(MyOKevents="OK17")
+     RandomOKEvents(18)=(MyOKevents="OK18")
+     RandomOKEvents(19)=(MyOKevents="OK19")
+     RandomOKEvents(20)=(MyOKevents="OK20")
+     RandomOKEvents(21)=(MyOKevents="OK21")
+     RandomOKEvents(22)=(MyOKevents="OK22")
+     RandomOKEvents(23)=(MyOKevents="OK23")
+     RandomOKEvents(24)=(MyOKevents="OK24")
+     RandomOKEvents(25)=(MyOKevents="OK25")
+     RandomOKEvents(26)=(MyOKevents="OK26")
+     RandomOKEvents(27)=(MyOKevents="OK27")
+     RandomOKEvents(28)=(MyOKevents="OK28")
+     RandomOKEvents(29)=(MyOKevents="OK29")
 }

@@ -31,6 +31,20 @@ var transient float OldDilation,CurrentBW,DesiredBW,NextLevelTimer,LevelProgress
 var bool bUseBloom,bUseMotionBlur,bDisplayingProgress;
 var transient bool bFadeBW;
 
+var()   SpriteWidget			MyFlameIcon;
+var()   NumericWidget           FuelDigits;
+
+simulated function SetHUDAlpha()
+{
+	super.SetHUDAlpha();
+
+    MyFlameIcon.Tints[0].A = KFHUDAlpha;
+    MyFlameIcon.Tints[1].A = KFHUDAlpha;
+
+	FuelDigits.Tints[0].A = KFHUDAlpha;
+	FuelDigits.Tints[1].A = KFHUDAlpha;
+}
+
 simulated function DrawWeaponName(Canvas C)
 {
 	local string CurWeaponName, WProg;
@@ -159,6 +173,13 @@ simulated function UpdateHud()
 	{
 		super.UpdateHud();
 		return;
+	}
+	
+	FuelDigits.Value = CurClipsPrimary;
+
+	if ( PawnOwner.Weapon.Name == 'BDFuelCan_Weapon' )
+	{
+		FuelDigits.Value += KFWeapon(PawnOwner.Weapon).MagAmmoRemaining;
 	}
 
 	KFHPawn = KFHumanPawn(PawnOwner);
@@ -932,6 +953,15 @@ simulated function DrawHudPassA (Canvas C)
 				DrawSpriteWidget(C, WelderIcon);
 				DrawNumericWidget(C, WelderDigits, DigitsSmall);
 			}
+			else if( PawnOwner.Weapon.Name == 'BDFuelCan_Weapon' )
+			{
+				if ( !bLightHud )
+				{
+					DrawSpriteWidget(C, ClipsBG);
+				}
+				DrawSpriteWidget(C, MyFlameIcon);
+				DrawNumericWidget(C, FuelDigits, DigitsSmall);
+			}
 			else if ( PawnOwner.Weapon.GetAmmoClass(0) != none )
 			{
 				if ( !bLightHud )
@@ -954,6 +984,7 @@ simulated function DrawHudPassA (Canvas C)
 				{
 					DrawSpriteWidget(C, LawRocketIcon);
 				}
+				
 				else if ( Crossbow(PawnOwner.Weapon) != none )
 				{
 					DrawSpriteWidget(C, ArrowheadIcon);

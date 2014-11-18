@@ -47,8 +47,10 @@ simulated event UpdateScoreBoard(Canvas Canvas)
 	Canvas.DrawColor.R = 53;
 	Canvas.DrawColor.G = 242;
 	Canvas.DrawColor.B = 110;
-	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 30.0, (HeaderOffsetY - (YL + 15.0)));
-	Canvas.DrawTextClipped("www.nefserver.net - Custom Server");
+	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 20.0, (HeaderOffsetY - (YL + 25.0)));
+	Canvas.DrawTextClipped("www.nefserver.net - New Evolution Freeoram (nefmod)");
+	Canvas.SetPos((0.5 * (Canvas.ClipX - XL)) + 50.0, (HeaderOffsetY - (YL + 17.0)));
+	Canvas.DrawTextClipped("NEF Custom Server | Hard/HoE/Vehicles");
 	Canvas.DrawColor.R = 245;
 	Canvas.DrawColor.G = 144;
 	Canvas.DrawColor.B = 37;
